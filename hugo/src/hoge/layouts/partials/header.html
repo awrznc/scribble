@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>newtheme</title>
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/style.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/syntax.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <ul id="nav">
+        <li><a class="img" href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL }}img/coollogo.png"  height="60"></img></a></li>
+        <li><a class="str" href="{{ .Site.BaseURL }}get-started/">GET&nbsp;STARTED</a></li>
+        <li><a class="str" href="{{ .Site.BaseURL }}docs/">DOCS</a></li>
+        <li><a class="str" href="{{ .Site.BaseURL }}sample/">SAMPLE</a></li>
+      </ul>
+    </header>
+
+    <script type="text/javascript">
+      var url = window.location;
+      $('#nav a[href="'+url+'"]').addClass('active');
+    </script>
+    <main>

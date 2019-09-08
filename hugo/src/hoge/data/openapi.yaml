@@ -1,0 +1,13 @@
+openapi: '3.0.2'
+
+info:
+  title: 'sample APIs'
+  version: '0.0.1'
+  description: 'desc'
+
+paths:
+  '/healthcheck':
+    get:
+      responses:
+        '200':
+          description: 'OK'
