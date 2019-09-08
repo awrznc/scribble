@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  server:
+    build:
+      context: .
+    tty: true
+    privileged: true
+    ports:
+      - "1313:1313"
+    volumes:
+      - ./src:/root/src

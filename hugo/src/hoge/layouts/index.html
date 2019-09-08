@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+  <div id="lp">
+    <div class="block">
+      <div class="logo" style="background-image:url('{{ .Site.BaseURL }}img/coollogo.png')"></div>
+      <h1 class="title">{{.Site.Data.openapi.info.title}}</h1>
+      <p class="description">{{.Site.Data.openapi.info.description}}</p>
+    </div>
+  </div>
+
+  <article>
+    <ul>
+      {{ range (.Paginator 10).Pages }}
+        {{ .Render "list" }}
+      {{ end }}
+    </ul>
+  </article>
+{{ partial "footer.html" . }}
