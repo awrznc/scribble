@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+  ruby:
+    build:
+      context: .
+    tty: true
+    privileged: true
+    volumes:
+      - ./src:/root/src
