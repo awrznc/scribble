@@ -1,3 +1,8 @@
+// Windowsのコマンドプロンプトウィンドウを抑止
+// - debug   ウィンドウを出す
+// - release ウィンドウを抑止する
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
 use sdl2::pixels::Color;
