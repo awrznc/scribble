@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  pwa:
+    build:
+      context: .
+    tty: true
+    privileged: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/root/src
+    environment: 
+      - HOST=0.0.0.0
