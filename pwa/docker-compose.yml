@@ -9,3 +9,5 @@ services:
       - "3000:3000"
     volumes:
       - ./src:/root/src
+    environment: 
+      - HOST=0.0.0.0

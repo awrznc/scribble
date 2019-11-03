@@ -1,10 +1,7 @@
-FROM centos:latest
-
-# install npm
-RUN curl -sL https://rpm.nodesource.com/setup_13.x | bash -
-RUN yum install -y nodejs
+FROM node:13.0.1-alpine
 
 ## install nuxtjs
+RUN npm update npm
 RUN npm install -g vue-cli
 
 WORKDIR /root/src
