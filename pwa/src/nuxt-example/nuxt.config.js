@@ -34,6 +34,13 @@ module.exports = {
         })
       }
     }
+  },
+  modules: [
+    '@nuxtjs/pwa'
+  ],
+  manifest: {
+    name: "QUANON's Page",
+    lang: 'ja'
   }
 }
 
