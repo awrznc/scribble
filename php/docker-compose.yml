@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  php:
+    build:
+      context: .
+    tty: true
+    privileged: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/root/src
