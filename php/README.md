@@ -18,6 +18,8 @@ $ php artisan make:controller SampleController
 # 簡易サーバの立ち上げ
 $ php artisan serve -host 0.0.0.0
 
+# http://localhost:8000/
+
 ```
 
 laravelのORMは効率が悪いらしい
