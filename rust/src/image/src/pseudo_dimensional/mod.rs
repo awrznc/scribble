@@ -88,7 +88,6 @@ impl PseudoDimensional for Vec<f32> {
             }
         }
 
-        // println!("edit_vec: {:?}", edit_vec);
         edit_vec
     }
 
@@ -199,7 +198,6 @@ pub fn generate_random_vec(size: usize, low: f32, high: f32) -> Vec<f32> {
 }
 
 pub fn generate_meshgrid_vec(n: usize, low: f32, high: f32) -> Vec<f32> {
-    // (high..low).step_by( (high-low)/(size as f32) ).collect::< Vec<f32> >()
     let size = n * n;
     let scale = (high-low)/(size as f32);
     vec![low; size].iter().enumerate().map(|(i,v)|
