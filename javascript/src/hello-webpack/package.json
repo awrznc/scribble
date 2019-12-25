@@ -1,0 +1,15 @@
+{
+  "name": "hello-webpack",
+  "version": "1.0.0",
+  "description": "モジュールバンドラのこと。\r （モジュールバンドラとは、複数のモジュールを1つにまとめたファイルを出力するツールのこと）",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  }
+}
