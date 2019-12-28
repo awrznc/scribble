@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+  javascript:
+    build:
+      context: .
+    tty: true
+    privileged: true
+    volumes:
+      - ./src:/root/src
