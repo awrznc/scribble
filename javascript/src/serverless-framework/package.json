@@ -1,0 +1,20 @@
+{
+  "name": "serverless-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^25.1.0",
+    "jest-environment-serverless": "^0.2.4",
+    "serverless": "^1.61.3",
+    "serverless-offline": "^5.12.1"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-serverless"
+  }
+}
