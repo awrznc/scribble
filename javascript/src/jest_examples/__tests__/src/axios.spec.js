@@ -7,3 +7,11 @@ describe('#httpGet', () => {
     expect( (await Axs.httpGet()).data ).toEqual( JSON.parse(response));
   });
 });
+
+describe('#httpPost', () => {
+  it('モックの内容が返される', async () => {
+    const fs = require('fs');
+    const response = fs.readFileSync('__mocks__/example.json', 'utf-8');
+    expect( (await Axs.httpPost()).data ).toEqual( JSON.parse(response));
+  });
+});
