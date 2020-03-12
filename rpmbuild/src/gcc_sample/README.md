@@ -7,21 +7,18 @@
 
 ```bash
 gcc -o ./src/hello ./src/main.c
-# gcc -o ./hello/SOURCES/hello ./src/main.c
-tar czvf ./hello/SOURCES/hello-1.0.tar.gz ./src/hello
 ```
 
 ### RPM Build
 
 ```bash
-# rpmbuild --define "_topdir {{build_dir_path}}" -bb ./*.spec
-rpmbuild --define "_topdir $(pwd)/hello" -bb hello/SPECS/sample.spec
+export SRC=$(pwd) && rpmbuild -bb hello.spec
 ```
 
 ### install
 
 ```bash
-rpm -ivh ./hello/RPMS/x86_64/hello-1-1.el8.x86_64.rpm
+rpm -ivh /root/rpmbuild/RPMS/x86_64/hello-1.0.0-1.x86_64.rpm
 ```
 
 ### memo
