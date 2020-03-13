@@ -2,17 +2,16 @@
 cmake_minimum_required(VERSION 3.1)
 
 # プロジェクトの設定
-project(sample C)
+project(test_cmake C)
 
-# ライブラリの取り込み
-add_subdirectory(./sample)
+# sample.cをコンパイルして共有ライブラリlibsample.soを作成
+add_library(sample SHARED sample/src/sample.c)
 
-# 追加
-# link_directories(./)
+# 共有ライブラリのリンカを作成しないようにする
 set(CMAKE_SKIP_RPATH TRUE)
 
 # 実行ファイルの作成
 add_executable(sample_app main.c)
 
-# sample ライブラリを sample_app にリンク
+# sample_appを作成する際にlibsample.soをリンク
 target_link_libraries(sample_app sample)
