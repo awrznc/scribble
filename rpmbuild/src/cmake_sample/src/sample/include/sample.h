@@ -1,0 +1,1 @@
+int sample_print();
