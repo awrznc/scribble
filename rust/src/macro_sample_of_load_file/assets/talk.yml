@@ -1,0 +1,4 @@
+scene_hello:
+  -
+    ja: "こんにちは!"
+    en: "hello!"
