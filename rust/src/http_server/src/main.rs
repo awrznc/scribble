@@ -2,8 +2,9 @@ use std::net::{TcpListener, TcpStream};
 use std::writeln;
 use std::thread;
 use std::io::{Write, BufRead, BufReader, copy};
+use std::io::prelude::*;
 
-fn get_operation(stream: &mut TcpStream) {
+fn operation(stream: &mut TcpStream) {
 
     // convert bytes => str
     let mut file: &[u8] = "hello".as_bytes();
@@ -30,14 +31,18 @@ fn handle_client(stream: TcpStream) {
     );
 
     // 受信内容の表示
-    print!("LOG: {}", first_line);
+    print!("{}", first_line);
+    let mut buffer = [0; 512];
+    stream.read(&mut buffer).unwrap();
+    println!("{}", String::from_utf8_lossy(&buffer[..]));
+
 
     // 受信内容からレスポンス内容を作成
     let mut params = first_line.split_whitespace();
     let method = params.next();
-    let path = params.next();
-    match (method, path) {
-        (Some("GET"), Some(file_path))  => get_operation(stream.get_mut()),
+    match method {
+        Some("GET")  => operation(stream.get_mut()),
+        Some("POST") => operation(stream.get_mut()),
         _ => panic!("failed to parse"),
     }
 }
