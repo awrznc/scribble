@@ -120,26 +120,7 @@ fn main() {
     // グラフは隣接リストとして表され、ノード値に対応する各インデックスには、
     // 発信エッジのリストがあります。その効率性から選ばれました。
 
-    let json = json_parse!({
-        "a": [
-            { "node": "c", "cost": "10" },
-            { "node": "b", "cost": "1" }
-        ],
-        "b": [
-            { "node": "d", "cost": "2" }
-        ],
-        "c": [
-            { "node": "b", "cost": "1" },
-            { "node": "d", "cost": "3" },
-            { "node": "e", "cost": "1" }
-        ],
-        "d": [
-            { "node": "a", "cost": "7" },
-            { "node": "e", "cost": "2" }
-        ],
-        "e": [ ]
-    });
-    println!("{:?}", json);
+    let json = include!("./../target/converted_data.rs");
 
     assert_eq!(get_low_cost(&json, "a", "b"), Some(1));
     assert_eq!(get_low_cost(&json, "a", "d"), Some(3));

@@ -1,19 +1,19 @@
 {
   "a": [
-    { "node": "c", "cost": 10 },
-    { "node": "b", "cost": 1 }
+      { "node": "c", "cost": "10" },
+      { "node": "b", "cost": "1" }
   ],
   "b": [
-    { "node": "d", "cost": 2 }
+      { "node": "d", "cost": "2" }
   ],
   "c": [
-    { "node": "b", "cost": 1 },
-    { "node": "d", "cost": 3 },
-    { "node": "e", "cost": 1 }
+      { "node": "b", "cost": "1" },
+      { "node": "d", "cost": "3" },
+      { "node": "e", "cost": "1" }
   ],
   "d": [
-    { "node": "a", "cost": 7 },
-    { "node": "e", "cost": 2 }
+      { "node": "a", "cost": "7" },
+      { "node": "e", "cost": "2" }
   ],
   "e": [ ]
 }
