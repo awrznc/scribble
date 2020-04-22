@@ -1,5 +1,5 @@
-FROM node:12.10.0-alpine
+FROM node:13.12
 
 RUN npm update npm
 
-WORKDIR /root/src
+WORKDIR /home/src
