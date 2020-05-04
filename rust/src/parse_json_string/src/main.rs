@@ -61,6 +61,8 @@ macro_rules! json_parse {
                 }
             }
 
+            characters.insert(keykey, char_vec.clone());
+
             characters
         }
     };
