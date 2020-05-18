@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    memcache-client (1.8.5)
+    redis (4.1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  memcache-client
+  redis
+
+BUNDLED WITH
+   2.1.4
