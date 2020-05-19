@@ -4,7 +4,7 @@
 # 動的ライブラリの生成
 gcc -shared -fPIC ./src/lib/sample.c -o libsample.so
 
-# 実行ファイルのコンパイル
+# 実行ファイルの生成
 gcc -o sample src/main.c -L. -lsample
 
 # （静的リンクの場合）
