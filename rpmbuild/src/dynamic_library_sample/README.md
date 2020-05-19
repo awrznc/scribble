@@ -1,7 +1,7 @@
 ## GCC Build
 
 ```bash
-# 動的ライブラリの生成
+# 共有ライブラリの生成
 gcc -shared -fPIC ./src/lib/sample.c -o libsample.so
 
 # 実行ファイルの生成
