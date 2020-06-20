@@ -1,9 +1,9 @@
 version: '3.5'
 services:
-  rust:
+  server:
     build:
       context: .
     tty: true
     privileged: true
     volumes:
-      - ./src:/root/src
+      - ./../../src:/home/src
