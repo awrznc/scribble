@@ -1,0 +1,11 @@
+/*リソーススクリプト*/
+WINDCP MENU {
+    POPUP "File" {
+        MENUITEM "OpenNewWindow" , 40001
+        MENUITEM "OpenShell" , 40001
+        MENUITEM "Close" , 40001
+    }
+    POPUP "Docker" {
+        MENUITEM "Connect" , 40001
+    }
+}
