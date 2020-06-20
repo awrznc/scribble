@@ -1,0 +1,8 @@
+[package]
+name = "toast_notification"
+version = "0.1.0"
+authors = ["ContainerAdministrator"]
+edition = "2018"
+
+[dependencies]
+winrt = "0.7"
