@@ -24,4 +24,4 @@ RUN curl -OL https://www.libsdl.org/release/SDL2-devel-2.0.10-mingw.tar.gz && \
 # open-ssl-devel
 RUN dnf install -y openssl-devel
 
-WORKDIR /root/src
+WORKDIR /home/src

@@ -6,4 +6,4 @@ services:
     tty: true
     privileged: true
     volumes:
-      - ./src:/home/src
+      - ./../../src:/home/src
