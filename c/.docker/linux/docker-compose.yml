@@ -3,7 +3,8 @@ services:
   server:
     build:
       context: .
+      dockerfile: Dockerfile
     tty: true
     privileged: true
     volumes:
-      - ./src:/home/src
+      - ./../../src:/home/src
