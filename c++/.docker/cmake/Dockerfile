@@ -32,4 +32,4 @@ RUN ./bootstrap --prefix=/usr/local/lib/cmake-3.15.2 --no-system-libs
 RUN make -j2 && make install
 ENV PATH $PATH:/usr/local/lib/cmake-3.15.2/bin
 
-WORKDIR /root/src
+WORKDIR /home/src
