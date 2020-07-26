@@ -1,5 +1,5 @@
 [package]
-name = "sdl2"
+name = "open_window"
 version = "0.1.0"
 edition = "2018"
 
