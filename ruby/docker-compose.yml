@@ -1,9 +1,11 @@
 version: '3.5'
 services:
-  ruby:
+  server:
     build:
       context: .
     tty: true
     privileged: true
+    ports:
+      - "3000:3000"
     volumes:
-      - ./src:/root/src
+      - ./src:/home/src
