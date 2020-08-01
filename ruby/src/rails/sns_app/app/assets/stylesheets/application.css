@@ -13,3 +13,52 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  width: 100%; height: 100%;
+  color: white;
+  background: content-box radial-gradient(circle, darkblue, black);
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  position: relative;
+  height: 64px;
+  z-index: 1;
+  width: 100%;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 22px;
+  position: absolute;
+  padding: 20px;
+  height: 30;
+}
+
+
+.menus {
+  top: 50%;
+  float: right;
+  padding: 20px;
+  list-style: none;
+  margin: 0;
+  height: 30;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+h2 {
+  z-index: 0;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}

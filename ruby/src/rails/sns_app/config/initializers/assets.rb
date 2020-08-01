@@ -12,3 +12,14 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# /tmp 以下にキャッシュを作成するようにする
+# Windowsのフォルダをマウントしている場合、そのフォルダ内では
+# 大文字・小文字違いの同名のディレクトリが作成できない
+Rails.application.config.assets.configure do |env|
+  env.cache = Sprockets::Cache::FileStore.new(
+    ENV.fetch("SPROCKETS_CACHE", "/tmp/cache/assets"),
+    Rails.application.config.assets.cache_limit,
+    env.logger
+  )
+end
