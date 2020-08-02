@@ -49,6 +49,11 @@ header {
   height: 30;
 }
 
+li {
+  padding-left: 30px;
+  float: left;
+}
+
 a {
   color: white;
   text-decoration: none;
