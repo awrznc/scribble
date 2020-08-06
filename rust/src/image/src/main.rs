@@ -11,7 +11,7 @@ fn main() {
 fn pseudo_dimensional() {
 
     // 行列に利用する配列の長さ
-    let n = 800;
+    let n = 255;
 
     // 行列の行の幅
     let x = n;
@@ -27,11 +27,19 @@ fn pseudo_dimensional() {
     let dx = 0.01;
     let dt = 1.;
 
-    let du = 2e-5;
-    let dv = 1e-5;
+    // 値が小さいほど細かくなる（が荒くなる）
+    // let du = 2e-5;
+    // let dv = 1e-5;
+    let du = 0.00001;
+    let dv = 0.000005;
+
+    // let (f, k) = (
+    //     generate_meshgrid_vec(n, 0.02, 0.06),
+    //     generate_meshgrid_vec(n, 0.05, 0.08)
+    // );
     let (f, k) = (
-        generate_meshgrid_vec(n, 0.02, 0.06),
-        generate_meshgrid_vec(n, 0.05, 0.08)
+        generate_meshgrid_vec(n, 0.04, 0.04),
+        generate_meshgrid_vec(n, 0.06, 0.06)
     );
 
     for _x in 0..10000 {
@@ -89,5 +97,5 @@ fn pseudo_dimensional() {
         );
     }
 
-    imgbuf.save("output/fractal.png").unwrap();
+    imgbuf.save("output/sample.png").unwrap();
 }
