@@ -3,7 +3,7 @@
 ## version check
 
 ```.bash
-$ docker-compose run rust /root/.cargo/bin/rustc --version
+$ docker-compose run server /root/.cargo/bin/rustc --version
 ```
 
 or
