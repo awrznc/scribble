@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  wasm:
+  server:
     build:
       context: .
     tty: true
@@ -8,4 +8,4 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./src:/root/src
+      - ./src:/home/src
