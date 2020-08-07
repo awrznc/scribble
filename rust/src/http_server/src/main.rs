@@ -49,7 +49,7 @@ fn handle_client(stream: TcpStream) {
 
 
 fn main() {
-    let listener = TcpListener::bind("127.0.0.1:8080").unwrap();
+    let listener = TcpListener::bind("0.0.0.0:8080").unwrap();
     for stream in listener.incoming() {
         match stream {
             Err(e) => {
