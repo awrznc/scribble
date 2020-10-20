@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service Sample {
+  rpc GetSample (Hoge) returns (Piyo) {}
+}
+
+message Hoge {
+  string flag = 1;
+}
+
+message Piyo {
+  string name = 1; // サンプル
+  string kind = 2;
+}
