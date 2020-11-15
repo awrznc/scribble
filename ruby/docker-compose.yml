@@ -7,3 +7,5 @@ services:
     privileged: true
     volumes:
       - ./src:/root/src
+    ports:
+      - "4567:4567"
