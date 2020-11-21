@@ -15,7 +15,13 @@ vi sample.proto
 # .proto ファイルからserver、client、interface等のコードを生成する
 
 ## golang
-protoc --go_out=plugins=grpc:golang/sample sample.proto
+protoc --go_out=golang/sample --go_opt=paths=source_relative \
+    --go-grpc_out=golang/sample --go-grpc_opt=paths=source_relative \
+    ./sample.proto
+
+## c++
+protoc -I ./ --grpc_out=cxx --plugin=protoc-gen-grpc=/home/grpc/cmake/build/grpc_cpp_plugin ./sample.proto
+protoc -I ./ --cpp_out=cxx ./sample.proto
 
 # ドキュメント作成
 protoc --doc_out=html,index.html:./ *.proto
@@ -30,10 +36,16 @@ protoc --doc_out=html,index.html:./ *.proto
 # server
 
 ## golang
-go run golang/server.go
+go run /home/src/sample/golang/server.go
+
+## c++
+mkdir -p /home/src/sample/cxx/build &&  cd /home/src/sample/cxx/build && \
+    rm -rf ./* && CC=gcc CXX=g++ cmake -G Ninja .. && ninja -j4 && ./server
 
 # client
+mkdir -p /home/src/sample/cxx/build &&  cd /home/src/sample/cxx/build && \
+    rm -rf ./* && CC=gcc CXX=g++ cmake -G Ninja .. && ninja -j4 && ./client
 
 ## golang
-go run golang/client.go
+go run /home/src/sample/golang/client.go
 ```

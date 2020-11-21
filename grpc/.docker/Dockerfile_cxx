@@ -1,0 +1,24 @@
+FROM centos:8
+
+WORKDIR /tmp
+ENV MY_INSTALL_DIR "/usr/local/"
+ENV PATH "$PATH:$MY_INSTALL_DIR/bin"
+RUN mkdir -p $MY_INSTALL_DIR
+RUN curl -OL https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-3.17.0-Linux-x86_64.sh && \
+    sh cmake-3.17.0-Linux-x86_64.sh -- --skip-license --prefix=$MY_INSTALL_DIR && \
+    rm -rf cmake-3.17.0-Linux-x86_64.sh
+RUN dnf install -y git gcc gcc-c++ && \
+    dnf --enablerepo=PowerTools install -y ninja-build
+RUN git clone --recurse-submodules -b v1.33.2 https://github.com/grpc/grpc --depth 1
+RUN mkdir -p /tmp/grpc/cmake/build
+WORKDIR /tmp/grpc/cmake/build
+RUN CC=gcc CXX=g++ cmake -G Ninja \
+        -DgRPC_INSTALL=ON \
+        -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+        -DCMAKE_BUILD_TYPE=Release \
+        ../..
+RUN ninja -j4
+RUN ninja install
+WORKDIR /tmp/
+RUN rm -rf ./grpc

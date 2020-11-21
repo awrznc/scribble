@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+option go_package = ".;sample";
+package sample;
+
 service Sample {
   rpc GetSample (Hoge) returns (Piyo) {}
 }
