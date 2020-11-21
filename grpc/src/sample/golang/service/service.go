@@ -7,6 +7,7 @@ import (
 )
 
 type SampleService struct {
+	protobuf.UnimplementedSampleServer
 }
 
 func (s *SampleService) GetSample(ctx context.Context, message *protobuf.Hoge) (*protobuf.Piyo, error) {

@@ -11,7 +11,7 @@ import (
 func main() {
     listenPort, err := net.Listen("tcp", ":19003")
     if err != nil {
-        log.Fatalln(err)
+        log.Fatalf("failed to listen: %v", err)
     }
     server := grpc.NewServer()
     sampleService := &service.SampleService{}

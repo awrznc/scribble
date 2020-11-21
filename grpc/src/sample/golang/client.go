@@ -8,17 +8,17 @@ import (
 )
 
 func main() {
-    conn, err := grpc.Dial("127.0.0.1:19003", grpc.WithInsecure())
+    conn, err := grpc.Dial("cxx:50051", grpc.WithInsecure())
     if err != nil {
         log.Fatal("client connection error:", err)
     }
     defer conn.Close()
     client := protobuf.NewSampleClient(conn)
-    message := &protobuf.Hoge{Flag: "sample"}
+    message := &protobuf.Hoge{ Flag: "sample" }
     response, err := client.GetSample(context.TODO(), message)
 
-    // // print error
-    // fmt.Printf("error::%#v \n", err)
+    // print error
+    fmt.Printf("error::%#v \n", err)
 
     // print result
     fmt.Printf("result.Name:%#v \n", response.Name)
