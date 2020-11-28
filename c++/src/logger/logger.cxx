@@ -5,7 +5,7 @@
 
 class Logger {
 public:
-    // ちなみにダブリン平均時やアルゼンチン標準時は時差がミリ秒単位まであるらしい
+    // ちなみにダブリン平均時は時差が秒単位、アルゼンチン標準時は時差がミリ秒単位まであるらしい
     char timezone[DATETIME_STR_SIZE];
     Logger(const char* input_time_zone) {
         char* to = timezone;
