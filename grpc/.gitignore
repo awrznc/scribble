@@ -1,8 +1,5 @@
 # pb
 # *.pb.*
 
-# docs
-index.html
-
 # cxx
 build/
