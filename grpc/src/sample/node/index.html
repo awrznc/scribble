@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <title>search</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+html {
+  font-family: 'Arial';
+  font-size: 14px;
+}
+
+input {
+  font-size: 1rem;
+  font-family: 'Arial';
+}
+
+#search {
+  height: 20px;
+}
+#input {
+  margin: 5px;
+  border-radius: 10px;
+  border: solid 1px #AAAAAA;
+  position: absolute;
+  z-index: 1;
+  background-color: #FFFFFF;
+}
+.line {
+  padding: 0.4em;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+input[type='text'] {
+	border: none;
+}
+input[type='text']:focus {
+	outline: none;
+}
+    </style>
+    <script type="text/javascript">
+
+function selectValue() {
+  document.getElementById( "textbox" ).value = event.target.innerText;
+  document.getElementById( "list" ).innerHTML = '';
+};
+
+function inputCheck() {
+  let inputValue = document.getElementById( "textbox" ).value;
+  document.getElementById( "list" ).innerHTML = '';
+  let list = '';
+  get();
+  if(inputValue !== '') {
+    list += '<div style="border-top: solid 1px #AAAAAA;"></div>';
+    ['1', '2', inputValue].forEach((value)=>{
+      list += `<div class="line" style="margin-left: 10px;padding: 0.4em;cursor: pointer;" onclick="selectValue()">${value}</div>`;
+    });
+  }
+  document.getElementById( "list" ).innerHTML = list;
+};
+
+function get() {
+  console.log("通った");
+  fetch('http://localhost:5000/aaa')
+    .then(response => response.json())
+    .then(data => console.log(data));
+}
+      </script>
+  </head>
+
+  <body>
+    <p>input:</p>
+    <div id="search">
+      <div id="input">
+        <input id="textbox" class="line" type="text" onkeyup="inputCheck()">
+        <div id="list"></div>
+      </div>
+    </div>
+    <p>重なり</p>
+  </body>
+
+</html>
