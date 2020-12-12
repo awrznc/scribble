@@ -1,23 +1,25 @@
 const http = require("http");
 const fs = require('fs');
 
-const server = http.createServer(function (req, res) {
-  const url = (req.url.endsWith("/") ? req.url + "index.html" : req.url);
+const server = http.createServer(function (request, response) {
+  const url = "./" + (request.url.endsWith("/") ? request.url + "index.html" : request.url);
+  let name = '';
   if (fs.existsSync(url)) {
     fs.readFile(url, (err, data) => {
       if (!err) {
-        res.writeHead(200, {"Content-Type": "text/html"});
-        res.end(data);
+        response.writeHead(200, {"Content-Type": "text/html"});
+        response.end(data);
       }
     });
-  } else if (req.url === "/aaa") {
-    res.writeHead(200, {"Content-Type": "text/html"});
-    res.end('{"data":"aaa"}');
+  } else if ( name = request.url.match(/^\/name\/(.+?)\/$/) ) {
+    console.log(name[1]);
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.end('["a", "b", "c"]');
   } else {
-    res.writeHead(302, {
+    response.writeHead(302, {
       'Location': 'http://localhost:5000'
     });
-    res.end();
+    response.end();
   }
 });
 

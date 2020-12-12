@@ -48,25 +48,21 @@ function selectValue() {
 
 function inputCheck() {
   let inputValue = document.getElementById( "textbox" ).value;
-  document.getElementById( "list" ).innerHTML = '';
-  let list = '';
-  get();
-  if(inputValue !== '') {
-    list += '<div style="border-top: solid 1px #AAAAAA;"></div>';
-    ['1', '2', inputValue].forEach((value)=>{
+  if(inputValue === '') {
+    document.getElementById( "list" ).innerHTML = '';
+    return 0;
+  }
+  fetch(`http://localhost:5000/name/${inputValue}/`).then(response => response.json()).then(data => {
+    document.getElementById( "list" ).innerHTML = '';
+    let list = '<div style="border-top: solid 1px #AAAAAA;"></div>';
+    data.forEach((value)=>{
       list += `<div class="line" style="margin-left: 10px;padding: 0.4em;cursor: pointer;" onclick="selectValue()">${value}</div>`;
     });
-  }
-  document.getElementById( "list" ).innerHTML = list;
+    document.getElementById( "list" ).innerHTML = list;
+  });
 };
 
-function get() {
-  console.log("通った");
-  fetch('http://localhost:5000/aaa')
-    .then(response => response.json())
-    .then(data => console.log(data));
-}
-      </script>
+    </script>
   </head>
 
   <body>
