@@ -48,4 +48,10 @@ mkdir -p /home/src/sample/cxx/build &&  cd /home/src/sample/cxx/build && \
 
 ## golang
 go run /home/src/sample/golang/client.go
+
+## node
+cd ./src/sample/node
+npm install
+node app.js
+# => http://localhost:5000/
 ```

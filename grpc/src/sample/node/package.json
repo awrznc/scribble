@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@grpc/grpc-js": "^1.2.2",
+    "@grpc/proto-loader": "^0.5.5"
+  }
+}

@@ -22,5 +22,16 @@ services:
     privileged: true
     volumes:
       - ./../src:/home/src
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile_node
+    tty: true
+    privileged: true
+    volumes:
+      - ./../src:/home/src
     ports:
-      - "19003:19003"
+      - "5000:5000"
+    # command: |
+    #   bash -c "npm install && npm start"

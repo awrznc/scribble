@@ -1,8 +1,8 @@
 # pb
 # *.pb.*
 
-# docs
-index.html
-
 # cxx
 build/
+
+# node
+node_modules
