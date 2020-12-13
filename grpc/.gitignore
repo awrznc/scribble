@@ -3,3 +3,6 @@
 
 # cxx
 build/
+
+# node
+node_modules

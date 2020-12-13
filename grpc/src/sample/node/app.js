@@ -12,9 +12,24 @@ const server = http.createServer(function (request, response) {
       }
     });
   } else if ( name = request.url.match(/^\/name\/(.+?)\/$/) ) {
-    console.log(name[1]);
+    console.log(decodeURI(name[1]));
     response.writeHead(200, {"Content-Type": "text/html"});
-    response.end('["a", "b", "c"]');
+
+    let grpcClient = require('./grpc_client');
+
+    let callback = (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(res);
+        response.end(`["${res.name}"]`);
+      }
+    }
+    grpcClient(
+      decodeURI(name[1]),
+      callback
+    );
+
   } else {
     response.writeHead(302, {
       'Location': 'http://localhost:5000'
