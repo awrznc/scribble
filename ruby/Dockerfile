@@ -1,4 +1,4 @@
-FROM ruby:2.6.0
+FROM ruby:latest
 
 RUN gem install bundler
 
