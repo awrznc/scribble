@@ -1,0 +1,23 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.container {
+    color: white;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.item {
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 30px;
+}
+
+p {
+    padding: 10px;
+}
