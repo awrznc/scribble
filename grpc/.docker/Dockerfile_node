@@ -1,0 +1,8 @@
+FROM centos:8
+
+WORKDIR /tmp
+RUN curl -sL https://rpm.nodesource.com/setup_15.x | bash -
+RUN dnf install -y nodejs
+RUN npm install
+
+WORKDIR /home/src/sample/node

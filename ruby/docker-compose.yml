@@ -7,5 +7,6 @@ services:
     privileged: true
     ports:
       - "3000:3000"
+      - "4567:4567"
     volumes:
       - ./src:/home/src

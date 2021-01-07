@@ -5,10 +5,10 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 ENV PATH $PATH:$HOME/.cargo/bin/
 
 RUN dnf upgrade -y && \
-    dnf install -y gcc
+    dnf install -y gcc gcc-c++
 
 # setting for cross-compile to windows
-RUN dnf --enablerepo=PowerTools install -y mingw64-gcc mingw64-winpthreads-static
+RUN dnf --enablerepo=PowerTools install -y mingw64-gcc mingw64-gcc-c++ mingw64-winpthreads-static
 RUN $HOME/.cargo/bin/rustup target add x86_64-pc-windows-gnu && \
     echo -n -e "[target.x86_64-pc-windows-gnu]\nlinker = \"/usr/bin/x86_64-w64-mingw32-gcc\"" >> ~/.cargo/config
 
@@ -23,5 +23,8 @@ RUN curl -OL https://www.libsdl.org/release/SDL2-devel-2.0.10-mingw.tar.gz && \
 
 # open-ssl-devel
 RUN dnf install -y openssl-devel
+
+# cmake
+RUN dnf install -y make cmake
 
 WORKDIR /home/src

@@ -4,15 +4,27 @@ use std::thread;
 use std::io::{Write, BufRead, BufReader, copy};
 use std::io::prelude::*;
 
+#[macro_use]
+extern crate serde_derive;
+extern crate serde_json;
+
+mod response;
+
 fn operation(stream: &mut TcpStream) {
 
     // convert bytes => str
-    let mut file: &[u8] = "hello".as_bytes();
+    // let mut file: &[u8] = "hello".as_bytes();
+    let aaaa = response::get_response().unwrap();
+    let mut file: &[u8] = &aaaa.as_bytes();
+
+    // let mut result: String = "".to_string();
+    // response::get_response(&result);
+    // println!("{:?}", response::get_response()?);
 
     // write
     writeln!(stream, "HTTP/1.1 200 OK").unwrap();
-    writeln!(stream, "Content-Type: text/html; charset=UTF-8").unwrap();
-    writeln!(stream, "Content-Length: {}", file.len()).unwrap();
+    writeln!(stream, "Content-Type: text/json; charset=UTF-8").unwrap();
+    // writeln!(stream, "Content-Length: {}", file.len()).unwrap();
     writeln!(stream).unwrap();
 
     copy(&mut file, stream).unwrap();
@@ -49,7 +61,7 @@ fn handle_client(stream: TcpStream) {
 
 
 fn main() {
-    let listener = TcpListener::bind("127.0.0.1:8080").unwrap();
+    let listener = TcpListener::bind("0.0.0.0:8080").unwrap();
     for stream in listener.incoming() {
         match stream {
             Err(e) => {
