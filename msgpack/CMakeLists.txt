@@ -4,8 +4,8 @@ project(sample CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 # msgpack
-set(MSGPACK_BUILD_TESTS OFF)
-set(MSGPACK_BUILD_EXAMPLES OFF)
+set(MSGPACK_BUILD_TESTS OFF CACHE BOOL "Disable MSGPACK_BUILD_TESTS.")
+set(MSGPACK_BUILD_EXAMPLES OFF CACHE BOOL "Disable MSGPACK_BUILD_EXAMPLES.")
 add_subdirectory(msgpack-c)
 include_directories(${msgpack_SOURCE_DIR}/include)
 
