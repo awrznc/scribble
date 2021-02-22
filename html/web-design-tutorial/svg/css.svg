@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="180">
+  <text x="20" y="60" font-family="Consolas" font-size="30" fill="#777">
+    <tspan fill="#0CB9C7">selector</tspan> {
+  </text>
+  <text x="53" y="110" font-family="Consolas" font-size="30" fill="#777">
+    <tspan fill="#78dbe3">property</tspan>: <tspan fill="#78dbe3">value</tspan>;
+  </text>
+  <text x="20" y="150" font-family="Consolas" font-size="30" fill="#777">
+    }
+  </text>
+
+  <text x="50" y="30" font-family="Consolas" font-size="10" fill="#0CB9C7">セレクタ</text>
+  <text x="80" y="84" font-family="Consolas" font-size="10" fill="#78dbe3">プロパティ</text>
+  <text x="240" y="84" font-family="Consolas" font-size="10" fill="#78dbe3">値</text>
+</svg>

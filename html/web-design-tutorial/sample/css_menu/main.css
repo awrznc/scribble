@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+div {
+  width: 100px;
+  height: 100px;
+  background: blue;
+}
+
+li {
+  /* font-family: 'Noto Sans JP', sans-serif; */
+  font-family: 'consolas', sans-serif;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      html, body {
+        height: 100%;
+      }
+      div {
+        width: 50%;
+        height: 100%;
+        list-style: none;
+        float: left;
+        margin: 0px;
+      }
+      textarea {
+        border: none;
+        outline: none;
+        resize: none;
+        font-family : consolas;
+        font-size : 18px;
+        width: 98%;
+        height: 98%;
+        background: #EEE;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script type="text/javascript">
+marked.setOptions( { langPrefix: '' } );
+
+window.document.onkeyup = function( event ) {
+  let src = document.getElementById("editor").value;
+  let html = marked(src);
+  document.getElementById("result").innerHTML = html;
+}
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css" />
+    <title>Markdown viewer</title>
+  </head>
+  <body>
+    <div>
+      <textarea id="editor" class="form-control"></textarea>
+    </div>
+    <div id="result" class="markdown-body">
+    </div>
+  </body>
+</html>

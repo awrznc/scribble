@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="270">
+  <rect width="200" height="250" x="10" y="10" rx="10" fill="#CCC"/>
+  <rect width="110" height="40" x="30" y="16" rx="10" fill="#FFF"/>
+  <rect width="196" height="208" x="12" y="50" rx="10" fill="#FFF"/>
+
+  <text x="40" y="37" font-family="Verdana" font-size="14" fill="#777">
+    Sample title
+  </text>
+
+  <text x="30" y="80" font-family="Verdana" font-size="14" fill="#777">
+    Sample body
+  </text>
+</svg>
