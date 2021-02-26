@@ -72,7 +72,7 @@ HTML形式の記法は `要素` の入れ子構造で構成されます。<br>
 強調         | **sample**                          | `**sample**` | `<b>sample</b>`
 取り消し     | ~~sample~~                          | `~~sample~~` | `<s>sample</s>`
 コード       | `sample`                            | <code>\`sample\`</code> | `<code>sample</code>`
-引用         | <blockquote style="margin: 0;">sample</blockquote> | \> sample | `<blockquote>sample</blockquote>`
+引用         | <blockquote style="margin: 0;">sample</blockquote> | `> sample` | `<blockquote>sample</blockquote>`
 リンク       | [sample](/)                         | `[sample](/)`| `<a href="/">sample</a>`
 
 ## 枠組み
