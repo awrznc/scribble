@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="125">
+  <style>
+    text {
+      font-family: 'Verdana';
+    }
+    .element-stroke { stroke-dasharray: 8% 10% 87% 115%}
+    .start-tag-stroke { stroke-dasharray: 0% 72% 44% 12% 15.5% 0%}
+    .end-tag-stroke { stroke-dasharray: 0% 21.5% 5% 11% 4.5% 0%}
+  </style>
+  <rect class="element-stroke" width="600" height="50" x="0" y="10" rx="10" fill="none" stroke="#DDD" stroke-width="2 0"/>
+  <rect class="start-tag-stroke" width="390" height="50" x="10" y="65" rx="10" fill="none" stroke="#DDD" stroke-width="2 0"/>
+  <rect class="end-tag-stroke" width="100" height="50" x="465" y="65" rx="10" fill="none" stroke="#DDD" stroke-width="2 0"/>
+
+  <text x="20" y="80" font-family="Consolas" font-size="30" fill="#777">
+    &lt;<tspan fill="#0CB9C7">tag </tspan><tspan fill="#78dbe3">attribute</tspan>=<tspan fill="#78dbe3">"value"</tspan>&gt;Text&lt;/<tspan fill="#0CB9C7">tag</tspan>&gt;
+  </text>
+
+  <text x="70" y="16" font-family="Consolas" font-size="16" fill="#777">要素</text>
+  <text x="40" y="50" font-family="Consolas" font-size="10" fill="#0CB9C7">開始タグ名</text>
+  <text x="130" y="50" font-family="Consolas" font-size="10" fill="#78dbe3">属性名</text>
+  <text x="300" y="50" font-family="Consolas" font-size="10" fill="#78dbe3">属性値</text>
+  <text x="410" y="50" font-family="Consolas" font-size="10" fill="#777">テキスト</text>
+  <text x="500" y="50" font-family="Consolas" font-size="10" fill="#0CB9C7">終了タグ名</text>
+  <text x="100" y="120" font-family="Consolas" font-size="12" fill="#777">開始タグ</text>
+  <text x="490" y="120" font-family="Consolas" font-size="12" fill="#777">終了タグ</text>
+</svg>

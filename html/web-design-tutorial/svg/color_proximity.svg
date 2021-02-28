@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="120">
+  <rect width="240" height="120" x="10" y="0" rx="10" fill="none" stroke="#AAA"/>
+  <rect width="60" height="60" x="160" y="20" rx="10" fill="#F00"/>
+  <rect width="60" height="60" x="40" y="20" rx="10" fill="#00F"/>
+  <text x="25" y="100" font-family="Verdana" font-size="14" fill="#F00">Red Square</text>
+  <text x="145" y="100" font-family="Verdana" font-size="14" fill="#00F">Blue Square</text>
+
+  <polyline fill="none" stroke="#AAA" points="277.5,45 292.5,60 277.5,75" />
+  <polyline fill="none" stroke="#AAA" points="267.5,45 282.5,60 267.5,75" />
+
+  <rect width="240" height="120" x="310" y="0" rx="10" fill="none" stroke="#AAA"/>
+  <rect width="60" height="60" x="460" y="20" rx="10" fill="#F00"/>
+  <rect width="60" height="60" x="340" y="20" rx="10" fill="#00F"/>
+  <text x="445" y="100" font-family="Verdana" font-size="14" fill="#F00">Red Square</text>
+  <text x="325" y="100" font-family="Verdana" font-size="14" fill="#00F">Blue Square</text>
+</svg>

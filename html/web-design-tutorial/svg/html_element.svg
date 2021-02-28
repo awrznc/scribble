@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="420">
+  <rect width="200" height="400" x="150" y="10" rx="10" fill="#CCC"/>
+  <rect width="110" height="40" x="170" y="16" rx="10" fill="#FFF"/>
+
+  <!-- title -->
+  <rect width="80" height="8" x="180" y="30" rx="4" fill="#CCC"/>
+
+  <!-- head -->
+  <rect width="196" height="140" x="152" y="50" rx="10" fill="#DDF"/>
+
+  <!-- img ( smartphone ) -->
+  <rect width="60" height="100" x="180" y="100" rx="4" fill="#EEF"/>
+  <rect width="50" height="100" x="185" y="120" rx="4" fill="#CCF"/>
+  <circle cx="230" cy="110" r="4" fill="#CCF"/>
+  <circle cx="220" cy="110" r="3" fill="#CCF"/>
+
+  <rect width="80" height="8" x="260" y="90" rx="4" fill="#888"/>
+  <rect width="60" height="8" x="280" y="105" rx="4" fill="#888"/>
+  <rect width="70" height="3" x="270" y="125" rx="2" fill="#CCC"/>
+  <rect width="80" height="3" x="260" y="133" rx="2" fill="#CCC"/>
+
+  <rect width="40" height="9" x="300" y="152" rx="4" fill="#111" opacity="0.4"/>
+  <rect width="40" height="9" x="298" y="150" rx="4" fill="#44F"/>
+  <rect width="20" height="3" x="308" y="153" rx="2" fill="#FFF"/>
+
+  <!-- foot -->
+  <rect width="196" height="48" x="152" y="360" rx="10" fill="#DDF"/>
+  <rect width="100" height="3" x="202" y="392" rx="2" fill="#888"/>
+
+  <!-- body -->
+  <rect width="196" height="200" x="152" y="180" fill="#FFF"/>
+  <rect width="80" height="8" x="210" y="200" rx="4" fill="#888"/>
+  <rect width="10" height="3" x="202" y="222" rx="2" fill="#CCC"/>
+  <rect width="30" height="3" x="218" y="222" rx="2" fill="#CCC"/>
+  <rect width="50" height="3" x="256" y="222" rx="2" fill="#CCC"/>
+  <rect width="40" height="3" x="192" y="230" rx="2" fill="#CCC"/>
+  <rect width="50" height="3" x="240" y="230" rx="2" fill="#DDF"/>
+  <rect width="20" height="3" x="295" y="230" rx="2" fill="#888"/>
+
+  <rect width="80" height="8" x="210" y="270" rx="4" fill="#888"/>
+  <rect width="95" height="3" x="202" y="292" rx="2" fill="#CCC"/>
+  <rect width="95" height="3" x="202" y="300" rx="2" fill="#CCC"/>
+  <rect width="95" height="3" x="202" y="308" rx="2" fill="#CCC"/>
+
+  <path d="M 300 330 300 350, 200 350, 200 330, 300 330" stroke="#888" stroke-width="1" fill="transparent"/>
+
+  <rect width="40" height="9" x="232" y="362" rx="4" fill="#111" opacity="0.4"/>
+  <rect width="40" height="9" x="230" y="360" rx="4" fill="#44F"/>
+  <rect width="20" height="3" x="240" y="363" rx="2" fill="#FFF"/>
+
+  <!-- tag -->
+  <text x="20" y="37" font-family="Verdana" font-size="14" fill="#A7A">title</text>
+
+  <circle cx="100" cy="33" r="4" fill="#A7A"/>
+  <path d="M 100 33 175 33" stroke="#A7A" stroke-width="2" fill="transparent"/>
+  <circle cx="175" cy="33" r="4" fill="#A7A"/>
+
+  <text x="420" y="100" font-family="Verdana" font-size="14" fill="#F77">p</text>
+  <text x="420" y="120" font-family="Verdana" font-size="14" fill="#F77">div</text>
+  <text x="420" y="140" font-family="Verdana" font-size="14" fill="#F77">ol ul li</text>
+
+  <circle cx="400" cy="96" r="4" fill="#F77"/>
+  <circle cx="400" cy="116" r="4" fill="#F77"/>
+  <circle cx="400" cy="136" r="4" fill="#F77"/>
+  <path d="M 400 96 360 96, 360 130, 340 130" stroke="#F77" stroke-width="2" fill="transparent"/>
+  <path d="M 400 116 370 116, 370 210, 320 210" stroke="#F77" stroke-width="2" fill="transparent"/>
+  <path d="M 400 136 380 136, 380 310, 305 310" stroke="#F77" stroke-width="2" fill="transparent"/>
+  <circle cx="340" cy="130" r="4" fill="#F77"/>
+  <circle cx="320" cy="210" r="4" fill="#F77"/>
+  <circle cx="305" cy="310" r="4" fill="#F77"/>
+
+  <text x="20" y="100" font-family="Verdana" font-size="14" fill="#77F">header</text>
+  <text x="20" y="120" font-family="Verdana" font-size="14" fill="#77F">footer</text>
+  <text x="20" y="140" font-family="Verdana" font-size="14" fill="#77F">h1 ~ h6</text>
+
+  <circle cx="100" cy="96" r="4" fill="#77F"/>
+  <circle cx="100" cy="116" r="4" fill="#77F"/>
+  <circle cx="100" cy="136" r="4" fill="#77F"/>
+  <path d="M 100 96 160 96" stroke="#77F" stroke-width="2" fill="transparent"/>
+  <path d="M 100 116 120 116, 120 400, 160 400" stroke="#77F" stroke-width="2" fill="transparent"/>
+  <path d="M 100 136 130 136, 130 205, 205 205" stroke="#77F" stroke-width="2" fill="transparent"/>
+  <circle cx="160" cy="96" r="4" fill="#77F"/>
+  <circle cx="160" cy="400" r="4" fill="#77F"/>
+  <circle cx="205" cy="205" r="4" fill="#77F"/>
+
+
+  <text x="420" y="260" font-family="Verdana" font-size="14" fill="#8B5">a</text>
+  <text x="420" y="280" font-family="Verdana" font-size="14" fill="#8B5">b</text>
+  <text x="420" y="300" font-family="Verdana" font-size="14" fill="#8B5">br</text>
+
+  <circle cx="400" cy="256" r="4" fill="#8B5"/>
+  <circle cx="400" cy="276" r="4" fill="#8B5"/>
+  <circle cx="400" cy="296" r="4" fill="#8B5"/>
+  <path d="M 400 256 260 256, 260 240" stroke="#8B5" stroke-width="2" fill="transparent"/>
+  <path d="M 400 276 310 276, 310 240" stroke="#8B5" stroke-width="2" fill="transparent"/>
+  <path d="M 400 296 360 296, 360 225, 315 225" stroke="#8B5" stroke-width="2" fill="transparent"/>
+  <circle cx="260" cy="240" r="4" fill="#8B5"/>
+  <circle cx="310" cy="240" r="4" fill="#8B5"/>
+  <circle cx="315" cy="225" r="4" fill="#8B5"/>
+
+  <text x="20" y="260" font-family="Verdana" font-size="14" fill="#FA7">img</text>
+  <text x="20" y="280" font-family="Verdana" font-size="14" fill="#FA7">input</text>
+  <text x="20" y="300" font-family="Verdana" font-size="14" fill="#FA7">button</text>
+
+  <circle cx="100" cy="256" r="4" fill="#FA7"/>
+  <circle cx="100" cy="276" r="4" fill="#FA7"/>
+  <circle cx="100" cy="296" r="4" fill="#FA7"/>
+  <path d="M 100 256 190 256, 190 170" stroke="#FA7" stroke-width="2" fill="transparent"/>
+  <path d="M 100 276 140 276, 140 340, 190 340" stroke="#FA7" stroke-width="2" fill="transparent"/>
+  <path d="M 100 296 130 296, 130 365, 220 365" stroke="#FA7" stroke-width="2" fill="transparent"/>
+  <circle cx="190" cy="170" r="4" fill="#FA7"/>
+  <circle cx="190" cy="340" r="4" fill="#FA7"/>
+  <circle cx="220" cy="365" r="4" fill="#FA7"/>
+
+</svg>

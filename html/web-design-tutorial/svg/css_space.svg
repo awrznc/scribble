@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240">
+  <rect width="280" height="190" x="20" y="20" fill="#FCA" stroke="#555" style="stroke-dasharray: 3;"/>
+  <rect width="240" height="140" x="40" y="50" fill="#FEA" stroke="#555"/>
+  <rect width="200" height="90" x="60" y="80" fill="#DED" stroke="#555" style="stroke-dasharray: 3;"/>
+  <rect width="160" height="40" x="80" y="110" fill="#DEF" stroke="#AAA"/>
+
+  <text x="70" y="40" font-family="Verdana" font-size="10" fill="#333">Margin</text>
+  <text x="90" y="70" font-family="Verdana" font-size="10" fill="#333">Border</text>
+  <text x="110" y="100" font-family="Verdana" font-size="10" fill="#333">Padding</text>
+  <text x="130" y="135" font-family="Verdana" font-size="14" fill="#333">Content</text>
+</svg>
