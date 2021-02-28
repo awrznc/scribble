@@ -1,0 +1,115 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+body {
+  color: #FFFFFF;
+  font-family: 'Noto Serif JP';
+  text-align: center;
+}
+
+main {
+  padding: 0% 20% 0% 20%;
+  background-color: #222;
+  padding: 4em;
+}
+
+header {
+  height: 100%;
+  font-size: 200%;
+}
+
+.module {
+  position: relative;
+}
+.module::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
+  background-image: url("grass.jpg");
+  background-size: cover;
+  filter: grayscale(80%) brightness(20%);
+}
+.module-inside {
+  position: absolute;
+  margin: 20% 20% 20% 20%;
+}
+
+footer {
+  padding: 2em;
+  background-color: #111;
+}
+
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #111;
+  padding: 0em 2em 2em 2em;
+  margin-bottom: 2em;
+}
+
+th {
+  font-size: 150%;
+  padding: 1em;
+}
+
+td {
+  padding: 0.3em;
+}
+
+h1 {
+  margin: 1em 1em 1em 1em;
+  text-align: center;
+}
+
+h2 {
+  margin: 3em 0em 0em 0em;
+  padding: 1em;
+  text-align: center;
+}
+
+h3{
+  margin: 1em;
+}
+
+small {
+  font-size: 50%;
+}
+
+span {
+  color: #CDBB84;
+  font-size: 150%;
+}
+
+td {
+  width: 300px;
+}
+
+.menu {
+  text-align: center;
+
+}
+
+.menuContent {
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+  margin: 2em;
+}
+
+.menuDescription {
+  text-align: left;
+}
+
+.section {
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-bottom: 30px
+}
