@@ -20,6 +20,10 @@ header {
   font-size: 200%;
 }
 
+img {
+  border-radius: 5% 5% 5% 5%
+}
+
 .module {
   position: relative;
 }
@@ -77,6 +81,7 @@ h2 {
 
 h3{
   margin: 1em;
+  color: #CDBB84;
 }
 
 small {
