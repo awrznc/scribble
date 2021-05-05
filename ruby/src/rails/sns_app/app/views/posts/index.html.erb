@@ -1,0 +1,9 @@
+<%= render 'home/head' %>
+
+<div class="container">
+  <% @posts.each do |post| %>
+  <div class="item">
+    <p><%= post.content %></p>
+  </div>
+  <% end %>
+</div>

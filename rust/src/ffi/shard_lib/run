@@ -1,0 +1,26 @@
+#!/bin/bash -eu
+
+# dnf install -y ruby go
+# curl -fsSL https://deno.land/x/install/install.sh | sh
+# rustup target add wasm32-unknown-unknown
+
+# build rust source
+cargo build --release
+# cargo build --release --target=wasm32-unknown-unknown
+
+# ruby
+echo -e "ruby:"
+ruby ./load_source/app.rb
+
+# go
+echo -e "go:"
+go run ./load_source/main.go
+
+# javascript
+# echo -e "javascript:"
+# /root/.deno/bin/deno run --allow-read ./load_source/app.js
+
+# c
+echo -e "c:"
+gcc -L./target/release -lfoo ./load_source/main.c
+LD_LIBRARY_PATH=./target/release/ ./a.out

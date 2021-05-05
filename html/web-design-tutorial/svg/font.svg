@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250">
+  <rect width="780" height="230" x="10" y="10" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="25" y="50" font-family="Verdana" font-size="20" fill="#0CB9C7">書体</text>
+
+  <rect width="360" height="140" x="30" y="80" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="45" y="107" font-family="Verdana" font-size="18" fill="#0CB9C7">欧文書体</text>
+  <rect width="150" height="80" x="50" y="120" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="65" y="147" font-family="Verdana" font-size="16" fill="#0CB9C7">セリフ体</text>
+  <text x="75" y="177" font-family="Verdana" font-size="14" fill="#0CB9C7">例:Slabo</text>
+  <rect width="150" height="80" x="220" y="120" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="235" y="147" font-family="Verdana" font-size="16" fill="#0CB9C7">サンセリフ体</text>
+  <text x="245" y="177" font-family="Verdana" font-size="14" fill="#0CB9C7">例:Roboto, Arial</text>
+
+  <rect width="360" height="140" x="410" y="80" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="425" y="107" font-family="Verdana" font-size="18" fill="#0CB9C7">和文書体</text>
+  <rect width="150" height="80" x="430" y="120" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="615" y="147" font-family="Verdana" font-size="16" fill="#0CB9C7">明朝体</text>
+  <text x="625" y="177" font-family="Verdana" font-size="14" fill="#0CB9C7">例:游明朝</text>
+  <rect width="150" height="80" x="600" y="120" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="445" y="147" font-family="Verdana" font-size="16" fill="#0CB9C7">ゴシック体</text>
+  <text x="445" y="177" font-family="Verdana" font-size="14" fill="#0CB9C7">例:游ゴシック</text>
+
+
+  <!-- <rect width="160" height="100" x="210" y="80" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="225" y="107" font-family="Verdana" font-size="18" fill="#0CB9C7">和文書体</text> -->
+
+
+</svg>

@@ -1,0 +1,37 @@
+version: '3.5'
+services:
+
+  cxx:
+    build:
+      context: .
+      dockerfile: Dockerfile_cxx
+    tty: true
+    privileged: true
+    volumes:
+      - ./../src:/home/src
+    command: |
+      bash -c "mkdir -p /home/src/sample/cxx/build &&  cd /home/src/sample/cxx/build && rm -rf ./* && CC=gcc CXX=g++ cmake -G Ninja .. && ninja -j4 && ./server"
+    ports:
+      - "50051:50051"
+
+  golang:
+    build:
+      context: .
+      dockerfile: Dockerfile_golang
+    tty: true
+    privileged: true
+    volumes:
+      - ./../src:/home/src
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile_node
+    tty: true
+    privileged: true
+    volumes:
+      - ./../src:/home/src
+    ports:
+      - "5000:5000"
+    # command: |
+    #   bash -c "npm install && npm start"

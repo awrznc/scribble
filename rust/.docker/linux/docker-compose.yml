@@ -7,3 +7,5 @@ services:
     privileged: true
     volumes:
       - ./../../src:/home/src
+    ports:
+      - 8080:8080

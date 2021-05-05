@@ -1,0 +1,15 @@
+[package]
+name = "shard_lib"
+version = "0.1.0"
+authors = ["root"]
+edition = "2018"
+
+[lib]
+name = "foo"
+path = "src/lib.rs"
+crate-type = [
+    "dylib",    # ruby, go
+    # "cdylib"    # wasm
+]
+
+[dependencies]

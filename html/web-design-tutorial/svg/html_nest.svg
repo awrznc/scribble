@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="270">
+  <rect width="200" height="250" x="10" y="10" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="25" y="50" font-family="Verdana" font-size="20" fill="#0CB9C7">
+    html
+  </text>
+
+  <rect width="160" height="100" x="30" y="80" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="45" y="107" font-family="Verdana" font-size="20" fill="#0CB9C7">
+    head
+  </text>
+
+  <rect width="120" height="40" x="50" y="120" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="65" y="147" font-family="Verdana" font-size="20" fill="#0CB9C7">
+    title
+  </text>
+
+  <rect width="160" height="40" x="30" y="200" rx="10" fill="none" stroke="#0CB9C7" stroke-width="2"/>
+  <text x="45" y="227" font-family="Verdana" font-size="20" fill="#0CB9C7">
+    body
+  </text>
+</svg>
