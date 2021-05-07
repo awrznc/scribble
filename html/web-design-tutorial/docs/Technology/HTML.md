@@ -1,9 +1,7 @@
 HTML
 ===
 
-HTML (HyperText Markup Language) は主にWebページを作成するための形式言語です。<br>
-HTMLにはいくつかのバージョンが存在しますが、本チュートリアルではHTML5を学んでいきましょう。
-
+HTML (HyperText Markup Language) は主にWebページを作成するための形式言語です。
 
 ## 記法
 
