@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+
+  # ruby server
+  server:
+    image: kubernetes_server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # command: "ruby main.rb"
+    tty: true
+    ports:
+      - 9292:9292
+    # volumes:
+    #   - "./src:/home/src"
+    deploy:
+      replicas: 2
+
+  # postgres
+  postgres:
+    # image: postgres:latest
+    image: kubernetes_postgres:latest
+    build:
+      context: .
+      dockerfile: Dockerfile_DB
+    ports:
+      - 5432:5432
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
+    # volumes:
+    #   - "./src/sql:/docker-entrypoint-initdb.d"
+    deploy:
+      replicas: 1
