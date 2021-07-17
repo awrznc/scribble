@@ -29,3 +29,20 @@ isc = InitializeExsampleClass()
 
 isc.print_value()
 # => sample
+
+
+# === with Example === === ===
+class WithExsampleClass():
+    def __enter__(self):
+        print("before")
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("after")
+
+
+# 処理の開始時と終了時に事前に定義しておいた処理を実行する
+# Class側に事前に処理を実装しておく必要あり
+with WithExsampleClass() as value:
+    print('main')
+
+# before -> main -> after の順番で表示される
