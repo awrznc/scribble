@@ -1,0 +1,100 @@
+#!/usr/bin/env zsh
+
+# '`install target` `install command`'
+TARGET_LIST=('docker docker' 'docker-machine docker-machine' 'virtualbox VBoxManage')
+
+INSTALL_OPTION_STRING='install'
+UNINSTALL_OPTION_STRING='uninstall'
+
+
+# @brief Exit the script after outputting the message.
+# @param $1 Process name.
+# @param $2 Processing target name.
+function exit_with_message() {
+    echo "ERROR: An error occurred during the $1 of $2."
+    exit 1
+}
+
+
+# @brief Check to see if the target has been installed with `--version`.
+# @param $1 Command
+# @return error code.
+function is_install() {
+    $1 '--version' &> /dev/null
+    echo $?
+}
+
+
+# @brief Install docker tool chain.
+function install_docker() {
+
+    # Install docker tool chain.
+    for target in $TARGET_LIST; do
+        local pair=(`echo $target | sed 's/\s/\n/g'`)
+        brew install ${pair[1]}
+        local install_status=$?
+        if [[ $install_status -ne 0 ]]; then
+            exit_with_message 'installation' ${pair[1]}
+        fi
+
+        local version_command_status=$(is_install ${pair[2]})
+        if [[ $version_command_status -ne 0 ]]; then
+            exit_with_message 'installation' ${pair[1]}
+        fi
+    done
+
+    # Create docker machine.
+    docker-machine create --driver virtualbox default
+}
+
+
+# @brief Uninstall docker tool chain.
+function uninstall_docker() {
+
+    # Remove docker machine.
+    docker-machine rm default
+
+    # Uninstall docker tool chain.
+    for target in $TARGET_LIST; do
+        local pair=(`echo $target | sed 's/\s/\n/g'`)
+        brew uninstall ${pair[1]}
+        local version_command_status=$(is_install ${pair[2]})
+        if [[ $version_command_status -eq 0 ]]; then
+            exit_with_message 'uninstallation' ${pair[1]}
+        fi
+    done
+}
+
+
+# @brief Main.
+function main(){
+    local result=$(is_install brew)
+    if [[ ${result} -ne 0 ]]; then
+        exit_with_message 'validate' 'preprocess. You will need to install `Homebrew`'
+    fi
+
+    if [[ $1 == $INSTALL_OPTION_STRING ]]; then
+        install_docker
+    elif [[ $1 == $UNINSTALL_OPTION_STRING ]]; then
+        uninstall_docker
+    else
+        echo "dfm <command>"
+
+        # install:
+        #   brew install docker docker-machine virtualbox
+        #   docker-machine create --driver virtualbox default
+        echo "  install     Install docker tool chain for macOS."
+
+        # uninstall:
+        #   docker-machine rm default
+        #   brew uninstall docker docker-machine virtualbox
+        echo "  uninstall   Uninstall docker tool chain for macOS."
+        exit 0
+    fi
+
+    echo 'Finish!'
+}
+
+main $1 $2
+
+exit 0
