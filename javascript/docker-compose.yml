@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  javascript:
+  server:
     build:
       context: .
     tty: true
@@ -8,4 +8,4 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./src:/home/src
+      - ./src:/opt/src
