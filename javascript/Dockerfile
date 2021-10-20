@@ -1,5 +1,5 @@
-FROM node:13.12
+FROM node:16
 
-RUN npm update npm
+RUN npm update -g npm
 
-WORKDIR /home/src
+WORKDIR /opt/src
