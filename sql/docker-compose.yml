@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+
+  # PostgreSQL Server
+  postgresql_server:
+    image: postgres:14
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_pass
+
+  # MySQL Server
+  mysql_server:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: mysql_pass
+
+  # Client
+  sql_client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - "./:/opt/"
+    working_dir: /opt/
