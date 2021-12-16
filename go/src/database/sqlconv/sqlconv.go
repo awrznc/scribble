@@ -69,7 +69,7 @@ func mapToStruct(structObjects interface{}, mapObjects []map[string]interface{})
 			case reflect.Struct:
 				fieldValue.Set(reflect.ValueOf(mapValue))
 			default:
-				return fmt.Errorf("Struct's member is an invalid type. ( MemberType:%v, MemberTagName:%v, SetValue:%v )", fieldValue.Kind(), fieldType.Tag.Get("sql"), mapValue)
+				return fmt.Errorf("Struct's member is an invalid type. ( MemberType:%v, MemberTagName:%v, SetValue:%v )", fieldValue.Kind(), fieldType.Tag.Get(structTagType), mapValue)
 			}
 		}
 		sliceEntity := reflectPointerValue.Elem()
