@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
   sam_ssr
-  
+
   Sample SAM Template for sam_ssr
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
@@ -29,6 +29,16 @@ Resources:
       Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
         Variables:
           PARAM1: VALUE
+      Layers:
+        - !Ref HelloWorldFunctionLayer
+
+  HelloWorldFunctionLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      Description: HelloWorldFunction layer.
+      ContentUri: contents/
+    Metadata:
+      BuildMethod: makefile
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
