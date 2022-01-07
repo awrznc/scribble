@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- <script src="https://d3js.org/topojson.v3.min.js"></script> -->
+    <script>
+      let width = 650;
+      let height = 650;
+      let scale = 10000;
+      let svg = d3.select("#map").append("svg").attr("width", width).attr("height", height);
+      // d3.json("./../target/worldmap.topojson").then(draw);
+      d3.json("./../target/sample.geojson").then(draw);
+
+      function draw(worldmap) {
+        // let countries = topojson.feature(worldmap, worldmap.objects.sample);
+        let countries = worldmap;
+
+        let projection = d3.geoMercator().scale(scale).translate( [width / 2, height / 2] );
+        let path = d3.geoPath(projection);
+        svg.selectAll(".sample")
+          .data( countries.features )
+          .enter()
+          .append("path")
+          .attr("class", function(d) { return "country " + d.id; } )
+          .attr("d", path)
+          .attr("stroke", "white")
+          .attr("stroke-width", 0.2)
+          .style("fill", function(d) { return randColor(); } );
+      }
+
+      function randColor(){
+        return getColor(Math.random()*500%500);
+      }
+
+      function getColor(d) {
+        return  d > 400 ? '#DDDDDD' :
+                d > 300 ? '#BBBBBB' :
+                d > 200 ? '#999999' :
+                d > 100 ? '#777777' :
+                          '#555555';
+      }
+    </script>
+  </body>
+</html>

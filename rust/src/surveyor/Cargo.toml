@@ -1,0 +1,10 @@
+[package]
+    name = "surveyor"
+    version = "0.1.0"
+    edition = "2021"
+
+[dependencies]
+    shapefile = "0.3.0"
+    geozero = "0.7.7"
+    geozero-shp = "0.2.0"
+
