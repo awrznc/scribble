@@ -27,3 +27,16 @@ M5Stack
 1. IDEの `ファイル > 開く` から適切なファイルを開く
 1. IDEの `スケッチ > マイコンボードに書き込む` を選択するとビルドが走る
 1. 少し待つとM5Stack Core2上でプログラムが実行される。
+
+
+## tinygo
+
+Dockerfileは作成したけど何も試してないので間違ってるかも
+
+https://github.com/tinygo-org/tinygo-site/blob/b9b7dd5d4a772855f17e7805929d389f71814e2e/content/docs/reference/microcontrollers/m5stack-core2.md
+
+```bash
+# memo
+docker build -t m5stack:latest .
+docker run --rm -it m5stack:latest bash
+```
