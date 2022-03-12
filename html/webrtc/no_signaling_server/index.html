@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="module">
+
+import { WebRTC } from './script.js'
+
+let app = document.getElementById( 'app' );
+app.insertAdjacentHTML('beforeend', '<button id="start" type="button">start</button><br>');
+app.insertAdjacentHTML('beforeend', '<textarea id="sdp" cols="80" rows="5"></textarea><br>');
+app.insertAdjacentHTML('beforeend', '<button id="set" type="button">set</button><br>');
+app.insertAdjacentHTML('beforeend', '<button id="send" type="button">send</button><br>');
+
+let rtc = new WebRTC;
+document.getElementById('start').onclick = function () {
+  rtc.startPeerConnection();
+};
+document.getElementById('set').onclick = function () {
+  let sdp = document.getElementById('sdp').value;
+  rtc.setRemoteSdp(sdp);
+};
+document.getElementById('send').onclick = function () {
+  var d = new Date();
+  rtc.sendData(new Date().toString());
+};
+
+  </script>
+
+</body>
+</html>
