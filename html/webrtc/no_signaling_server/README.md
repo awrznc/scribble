@@ -1,7 +1,7 @@
 手動でシグナリングするp2pのサンプルです。
 
 ```bash
-python server.py
+python ./../../../python/src/server/server.py
 
 # 1. 以下をブラウザAとブラウザBで開く
 # http://localhost:8000/
