@@ -20,7 +20,7 @@ exit
 
 ```bash
 exit
-PGPASSWORD=example_password psql -h localhost -d example_db -U example_user;
+PGPASSWORD=example_password psql -h localhost -d example_db -U example_user
 ```
 
 ```sql
