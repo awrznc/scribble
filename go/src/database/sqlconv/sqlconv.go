@@ -30,6 +30,7 @@ func rowsToMap(rows *sql.Rows) ([]map[string]interface{}, error) {
 
 		results = append(results, result)
 	}
+
 	return results, err
 }
 
@@ -85,13 +86,9 @@ func mapToStruct(structObjects interface{}, mapObjects []map[string]interface{})
 
 func Unmarshal(rows *sql.Rows, structObjects interface{}) error {
 	mapObjects, err := rowsToMap(rows)
-	if err != nil {
+	if err != nil || len(mapObjects) == 0 {
 		return err
 	}
 
-	err = mapToStruct(structObjects, mapObjects)
-	if err != nil {
-		return err
-	}
-	return nil
+	return mapToStruct(structObjects, mapObjects)
 }
