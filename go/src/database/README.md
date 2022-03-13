@@ -41,5 +41,6 @@ INSERT INTO example_table(label, x, y) VALUES('sample point2', 109.1, 120.2);
 
 ```bash
 go get github.com/lib/pq
+go get github.com/go-sql-driver/mysql
 go run ./example/main.go
 ```

@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type DatabaseInformation struct {
@@ -22,8 +23,10 @@ func (crud *DatabaseInformation) openDatabase() (*sql.DB, error) {
 	switch crud.Driver {
 	case "postgres":
 		dataSource = fmt.Sprintf("user=%v password=%v host=%v dbname=%v", crud.User, crud.Password, crud.Host, crud.Database)
-	default:
+	case "mysql":
 		dataSource = fmt.Sprintf("%v:%v@(%v)/%v", crud.User, crud.Password, crud.Host, crud.Database)
+	default:
+		return nil, fmt.Errorf("unknown driver. ( %v )", crud.Driver)
 	}
 
 	return sql.Open(crud.Driver, dataSource)
