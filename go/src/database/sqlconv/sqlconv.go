@@ -21,6 +21,10 @@ func rowsToMap(rows *sql.Rows) ([]map[string]interface{}, error) {
 		rows.Scan(pointers...)
 		result := make(map[string]interface{})
 		for index, column := range columns {
+			switch entity[index].(type) {
+			case []byte:
+				entity[index] = string(entity[index].([]byte))
+			}
 			result[column] = entity[index]
 		}
 
