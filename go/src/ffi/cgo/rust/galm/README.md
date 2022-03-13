@@ -19,3 +19,9 @@ rustup target add x86_64-unknown-linux-musl
 cargo build --manifest-path ./galm_wrapper/Cargo.toml --release --target x86_64-unknown-linux-musl
 CGO_ENABLED="1" GOOS="linux" CC="x86_64-linux-musl-gcc" go build --ldflags '-linkmode external -extldflags "-static"' ./main.go
 ```
+
+## Test
+
+```bash
+go test
+```

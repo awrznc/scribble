@@ -4,9 +4,9 @@ version = 3
 
 [[package]]
 name = "galm"
-version = "0.1.4"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d22ae508d785e3040f92aa959c91a8c33bae0863f69af52a55d5c2ff5a9550ee"
+checksum = "cbe26d0852b4c938170129d3ef27d52442bb6334d6383b5d881cf50bd4cbc55c"
 
 [[package]]
 name = "galm_wrapper"

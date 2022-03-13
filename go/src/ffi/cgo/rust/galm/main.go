@@ -19,7 +19,7 @@ import (
 	"unsafe"
 )
 
-func sort(sortTarget *[]string, sortKey string) ([]string, error) {
+func GalMSort(sortTarget *[]string, sortKey string) ([]string, error) {
 
 	// validate
 	var result []string
@@ -61,6 +61,6 @@ func sort(sortTarget *[]string, sortKey string) ([]string, error) {
 func main() {
 	sortKey := "王様"
 	sortTarget := []string{"皇様", "玉様", "大様"}
-	result, _ := sort(&sortTarget, sortKey)
+	result, _ := GalMSort(&sortTarget, sortKey)
 	fmt.Println(result);
 }
