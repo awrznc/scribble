@@ -19,7 +19,8 @@ func main() {
 	crudObject := connect.DatabaseInformation{"example_user", "example_password", "localhost", "postgres", "example_db", "example_table"}
 
 	var exampleTable []ExampleTable
-	err := crudObject.Read(&exampleTable)
+	query := fmt.Sprintf("SELECT * FROM %v", crudObject.Table)
+	err := crudObject.Read(query, &exampleTable)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -50,4 +51,10 @@ func main() {
 	// Y        : 120.2
 	// CreateAt : 2021-12-10 09:27:42.005203 +0000 +0000
 	// UpdateAt : 2021-12-10 09:27:42.005203 +0000 +0000
+
+	query = fmt.Sprintf("INSERT INTO %v(label, x, y) VALUES('sample point', 1.0, 12.2);", crudObject.Table)
+	err = crudObject.Create(query, &exampleTable)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
