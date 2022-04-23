@@ -1,7 +1,7 @@
 export class WebRTC {
 
-  constructor() {
-    this.config = { 'iceServers': [ { "urls": "stun:stun.l.google.com:19302" } ] };
+  constructor(uri) {
+    this.config = { 'iceServers': [ { "urls": uri } ] };
     this.option = { ordered: false };
     this.channel;
     this.connection;
@@ -13,18 +13,18 @@ export class WebRTC {
   }
 
   createConnection() {
-    let self = this;
+    let thisApp = this;
     this.connection = new RTCPeerConnection(this.config);
-    this.connection.onicecandidate = (event) => { event.candidate ? console.log('candidate: ', event.candidate) : console.log(self.connection.localDescription.sdp); };
-    this.connection.onconnectionstatechange = (event) => console.log('state: ', self.connection.connectionState);
-    this.connection.ondatachannel = (event) => self.setChannel( event.channel );
+    this.connection.onicecandidate = (event) => { event.candidate ? console.log('candidate: ', event.candidate) : console.log(thisApp.connection.localDescription.sdp); };
+    this.connection.onconnectionstatechange = (event) => console.log('state: ', thisApp.connection.connectionState);
+    this.connection.ondatachannel = (event) => thisApp.setChannel( event.channel );
   }
 
   startPeerConnection() {
-    let self = this;
+    let thisApp = this;
     this.createConnection();
     this.setChannel( this.connection.createDataChannel('example-channel', this.option) );
-    this.connection.createOffer().then( (sessionDescription) => self.connection.setLocalDescription(sessionDescription) );
+    this.connection.createOffer().then( (sessionDescription) => thisApp.connection.setLocalDescription(sessionDescription) );
   }
 
   setRemoteSdp(sdpText) {
