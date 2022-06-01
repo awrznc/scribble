@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  smb.container:
+    image: dperson/samba
+    volumes:
+      - ./.smb/data:/mount
+    ports:
+      - 139:139
+      - 445:445
+    command: ['-s', 'share_example;/mount', '-u', 'root;samba_password', '-p']
+
+  s3.container:
+    image: minio/minio
+    volumes:
+      - ./.s3/data:/data
+    ports:
+      - 9000:9000
+      - 9001:9001
+    command: ['server', '/data', '--console-address', ':9001']
+    environment:
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: minio_password
+
+  create_s3_buckets:
+    image: minio/mc
+    depends_on:
+      - s3.container
+    entrypoint: |
+      /bin/sh -c "
+      /usr/bin/mc config host add s3_container http://s3.container:9000 root minio_password
+      /usr/bin/mc mb s3_container/example.bucket;
+      /usr/bin/mc policy set public s3_container/example.bucket;
+      exit 0;
+      "

@@ -1,0 +1,105 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: smb <--> lambda <--> s3
+
+# samconfig.toml
+Parameters:
+
+  SubnetId:
+    Type: String
+  SecurityGroupId:
+    Type: String
+
+  AwsUrl:
+    Type: String
+    Default: ''
+  AwsKey:
+    Type: String
+    Default: ''
+  AwsSeacret:
+    Type: String
+    Default: ''
+
+  S3BucketName:
+    Type: String
+  S3KeyPrefix:
+    Type: String
+
+  SambaIP:
+    Type: String
+  SambaPort:
+    Type: String
+  SambaShare:
+    Type: String
+  SambaPrefix:
+    Type: String
+    Default: ''
+  SambaUser:
+    Type: String
+  SambaPass:
+    Type: String
+
+
+# common settings
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: go1.x
+    Architectures:
+      - x86_64
+    VpcConfig:
+      SubnetIds:
+        - !Ref SubnetId
+      SecurityGroupIds:
+        - !Ref SecurityGroupId
+    Environment:
+      Variables:
+        AWS_URL: !Ref AwsUrl
+        AWS_KEY: !Ref AwsKey
+        AWS_SEACRET: !Ref AwsSeacret
+        S3_BUCKET_NAME: !Ref S3BucketName
+        S3_KEY_PREFIX: !Ref S3KeyPrefix
+        SMB_IP: !Ref SambaIP
+        SMB_PORT: !Ref SambaPort
+        SMB_SHARE: !Ref SambaShare
+        SMB_PREFIX: !Ref SambaPrefix
+        SMB_USER: !Ref SambaUser
+        SMB_PASS: !Ref SambaPass
+
+# lambda
+Resources:
+
+  # poller
+  Poller:
+    Type: AWS::Serverless::Function
+    Dependson: PollingLogGroup
+    Properties:
+      CodeUri: src/
+      Handler: src
+      Events:
+        PollingRate:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 minute)
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref S3BucketName
+        - S3WritePolicy:
+            BucketName: !Ref S3BucketName
+        - S3CrudPolicy:
+            BucketName: !Ref S3BucketName
+
+  PollingLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${Poller}
+      RetentionInDays: 3
+
+# aws architecture
+Outputs:
+  Poller:
+    Description: 'ARN'
+    Value: !GetAtt Poller.Arn
+  PollerIamRole:
+    Description: 'IAM Role'
+    Value: !GetAtt PollerRole.Arn
