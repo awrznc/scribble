@@ -3,7 +3,11 @@ Extensions
 
 ## 環境構築
 
+```bash
+docker run --rm -it -v "$(pwd):/opt/" node:18 bash
 ```
+
+```bash
 adduser developer
 su developer
 npm install
