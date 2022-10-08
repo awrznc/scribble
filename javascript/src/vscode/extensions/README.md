@@ -15,6 +15,14 @@ npm install
 
 ## 機能開発
 
+### New
+
+```
+npx yo code
+```
+
+### Run
+
 1. `code .` でプロジェクトを開く
 1. `F5` キーを押して拡張機能をコンパイル
 1. `Ctrl + Shift + P` キーを押して `Hello World` コマンドが実行できたら準備完了
