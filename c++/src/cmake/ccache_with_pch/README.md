@@ -1,19 +1,30 @@
-ccache or pch
+ccache with pch
 ===
 
 ## Setup
 
 ```bash
-$ docker run --rm -it -v "$(pwd):/opt" debian:11 bash
+$ docker run --rm -it -v "$(pwd):/opt" ubuntu:20.04 bash
 $ apt update -y && apt upgrade -y && apt install -y gcc g++ ninja-build cmake ccache
+
+# or
+
+$ apt update -y && apt upgrade -y && apt install -y clang-11 ninja-build cmake ccache
 ```
 
 ## Build
 
-```
-$ cmake -S . -B ./build/ -G Ninja
+```bash
+$ CC=clang CXX=clang++ cmake -S . -B ./build/ -G Ninja
 $ time cmake --build ./build/
+
+# or
+
+$ rm -rf ./build/ && cmake -S . -B ./build/ -G Ninja && time cmake --build ./build/ -- -v && ccache -sv
 ```
+
+キャッシュが効かずUncacheableが発生する場合がある？
+Clangだと大丈夫そうだけどMissは変わらず発生している。。
 
 ```bash
 # show ccache stats
@@ -21,6 +32,9 @@ $ ccache -s
 
 # clear cache
 $ ccache -C
+
+# zero statistics counters ( reset counter )
+$ ccache -z
 
 # disable cache
 $ export CCACHE_DISABLE=0
