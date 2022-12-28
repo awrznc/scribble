@@ -20,3 +20,12 @@ twice(3) do |value|
   puts value
   # => 6
 end
+
+# Numbered parameters
+['a', 'b', 'c'].each do
+  p _1
+end
+# =>
+# "a"
+# "b"
+# "c"
