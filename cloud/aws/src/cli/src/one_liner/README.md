@@ -50,3 +50,25 @@ for v in $(aws ec2 describe-regions | jq -r '.Regions[].RegionName') ; do {
   | jq -r '.[]' | grep ':$LATEST' | sort
 }; done > aws-lambda-nodejs.12.x-$(TZ=UTC date '+%Y-%m-%dT%TZ').csv
 ```
+
+## 特定のタグ名及び値が紐づいているEC2インスタンスの名前一覧を取得する（ユニーク）
+
+```bash
+TAG_ID="Color"
+TAG_VALUE="Red"
+aws ec2 describe-instances --filter "Name=tag:${TAG_ID},Values=${TAG_VALUE}" | jq -r '.Reservations[].Instances[].Tags[] | select(.Key == "Name") | .Value' | sort | uniq
+```
+
+## 特定のバケットに最後にアップロードされたS3オブジェクトを取得する
+
+```bash
+S3_BUCKET="piyo-piyo"
+PREFIX="piyo-"
+aws s3api list-objects --bucket ${S3_BUCKET} --prefix ${PREFIX} --query 'sort_by(Contents[],&LastModified)|[-1]'
+```
+
+## タグ付可能かつタグが紐づいているリソースのARNを部分一致で検索する
+
+```bash
+aws resourcegroupstaggingapi get-resources --query 'ResourceTagMappingList[?contains(ResourceARN,`piyo`)][].ResourceARN'
+```
