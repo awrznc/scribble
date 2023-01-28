@@ -1,0 +1,41 @@
+version=0.1
+
+[default.local_invoke.parameters]
+parameter_overrides=[
+    "AwsUrl=http://s3.container:9000",
+    "AwsKey=root",
+    "AwsSeacret=minio_password",
+    "S3BucketName=example.bucket",
+    "S3KeyPrefix=example_path",
+    "SambaIP=smb.container",
+    "SambaPort=445",
+    "SambaShare=share_example",
+    "SambaPrefix=''",
+    "SambaUser=root",
+    "SambaPass=samba_password"
+]
+
+[default.deploy.parameters]
+parameter_overrides=[
+    "SubnetId=subnet-aaaaaaaaaaaaaaaaa",
+    "SecurityGroupId=sg-aaaaaaaaaaaaaaaaa",
+    "AwsUrl=''",
+    "AwsKey=''",
+    "AwsSeacret=''",
+    "S3BucketName=poller.example.bucket",
+    "S3KeyPrefix=example_path",
+    "SambaIP=smb.container",
+    "SambaPort=445",
+    "SambaShare=share_example",
+    "SambaPrefix=''",
+    "SambaUser=root",
+    "SambaPass=samba_password"
+]
+stack_name = "poller"
+s3_bucket = "poller.example.bucket"
+s3_prefix = "poller"
+region = "ap-northeast-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []

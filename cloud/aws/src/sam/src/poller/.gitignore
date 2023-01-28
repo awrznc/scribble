@@ -1,0 +1,12 @@
+# sam
+.aws-sam/
+samconfig.toml
+
+# debug
+.debug_mnt/
+
+# dev
+.docker/.smb/data/*
+!.docker/.smb/data/.keep
+.docker/.s3/data/*
+!.docker/.s3/data/.keep

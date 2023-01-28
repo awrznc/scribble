@@ -1,0 +1,79 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Create Lambda with Logs example.'
+
+Parameters:
+
+  LambdaName:
+    Type: String
+
+  LambdaBody:
+    Type: String
+
+  # 整理用のタグ
+  TagKey:
+    Type: String
+    Default: 'id'
+
+  TagValue:
+    Type: String
+    Default: 'example'
+
+Resources:
+
+  # Lambda本体
+  Lambda:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: !Ref LambdaName
+      Handler: 'index.lambda_handler'
+      Role: !GetAtt 'AllowPutLogRole.Arn'
+      Code:
+        ZipFile: !Ref 'LambdaBody'
+      Runtime: 'python3.9'
+      Timeout: 10
+      Tags:
+        - Key: !Ref 'TagKey'
+          Value: !Ref 'TagValue'
+
+  # Lambdaに付加する権限
+  AllowPutLogRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: 'sts:AssumeRole'
+      Path: '/'
+      Policies:
+        - PolicyName: LambdaPolicyExample
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 'logs:PutLogEvents'
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                Resource:
+                  - !GetAtt LambdaLogGroup.Arn
+      Tags:
+        - Key: !Ref 'TagKey'
+          Value: !Ref 'TagValue'
+
+  # 作成するログ
+  LambdaLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName:
+        Fn::Join:
+          - ''
+          - - /aws
+            - /lambda/
+            - !Ref 'LambdaName'
+      RetentionInDays: 3
+      Tags:
+        - Key: !Ref 'TagKey'
+          Value: !Ref 'TagValue'
