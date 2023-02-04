@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+
+kind: Deployment
+metadata:
+  name: connection-app
+  labels:
+    app: connection
+spec:
+  selector:
+    matchLabels:
+      app: connection
+  replicas: 4
+
+  # Pod
+  template:
+    metadata:
+      labels:
+        app: connection
+    spec:
+      containers:
+        - name: connection-container
+          image: nginx:1.23.3
+          ports:
+            - containerPort: 80
+        - name: send-container
+          image: almalinux:9
+          command:
+            - sleep
+            - infinity
