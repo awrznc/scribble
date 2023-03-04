@@ -29,3 +29,12 @@ end
 # "a"
 # "b"
 # "c"
+
+# 未定義時代入
+# https://docs.ruby-lang.org/ja/latest/doc/symref.html#or
+value ||= 1
+p value
+# => 1
+value ||= 2
+p value
+# => 1
