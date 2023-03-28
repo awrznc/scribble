@@ -2,6 +2,7 @@ use redis::{Commands, Connection};
 
 fn set_and_get(con: &mut Connection) -> redis::RedisResult<isize> {
     con.set("key", 42)?;
+    con.set("piri", 42)?;
     let result: String = con.get("key")?;
 
     assert_eq!(result, "42".to_string());
@@ -34,6 +35,14 @@ fn eval(con: &mut Connection) -> redis::RedisResult<isize> {
     assert_eq!(result, "OK".to_string());
     let result = redis::cmd("GET").arg("piyo").query::<String>(con)?;
     assert_eq!(result, "poyo".to_string());
+
+    // 前方一致
+    let result = redis::cmd("EVAL")
+        .arg(include_str!("get_value_with_glob_style_key.lua"))
+        .arg("1").arg("pi*")
+        .query::<Vec<String>>(con)?;
+    // NOTE: 順番は違うかも
+    assert_eq!(result, vec!["42", "poyo"]);
 
     Ok(0)
 }
