@@ -1,0 +1,7 @@
+[package]
+name = "scripting_with_lua"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+redis = "0.22.3"
