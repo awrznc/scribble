@@ -1,0 +1,7 @@
+[package]
+name = "tiff-rich-black"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tiff = "0.9.0"
