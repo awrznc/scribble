@@ -1,0 +1,7 @@
+[package]
+name = "worka"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+workb = { path = "../workb", version = "0.1.0" }
