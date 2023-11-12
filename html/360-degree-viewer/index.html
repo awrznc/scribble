@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="target"></div>
+</body>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/",
+      "app": "./src/js/app.js"
+    }
+  }
+</script>
+<script type="module">
+  import { App } from 'app';
+  import * as THREE from "three";
+  import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+  (
+    function () {
+      const target = document.getElementById('target');
+      const image = 'tmp.jpg';
+      new App(target, image, THREE, OrbitControls)
+    }
+  )();
+</script>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+</html>
