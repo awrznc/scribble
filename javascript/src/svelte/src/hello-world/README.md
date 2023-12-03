@@ -1,10 +1,12 @@
 Hello, World
 ===
 
+SSG 対応の HelloWorld。
+
 ## Create
 
 ```bash
-$ docker run --rm -p '5173:5173' -v "$(pwd):/opt/workspace" -w /opt/workspace -it node:21 bash
+$ docker run --rm -p '5173:5173' -p '4173:4173' -v "$(pwd):/opt/workspace" -w /opt/workspace -it node:21 bash
 $ npm create svelte@latest hello-world
 Need to install the following packages:
 create-svelte@5.3.2
@@ -39,11 +41,22 @@ To close the dev server, hit Ctrl-C
 Stuck? Visit us at https://svelte.dev/chat
 
 $ cd hello-world && npm install
+$ npm i @sveltejs/adapter-static
+# svelte.config.js の修正
 ```
 
 ## Run
 
 ```bash
+# package.json の vite dev に `--host 0.0.0.0` を追加
 $ npm run dev
 # => http://localhost:5173/
+
+# +layout.server.js の追加
+$ npm run build
+# => build/ 配下に生成される
+
+# ビルド結果の確認
+$ npm run preview
+# => http://localhost:4173/
 ```
