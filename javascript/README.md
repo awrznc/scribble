@@ -6,7 +6,10 @@ JavaScript
 ### Node.js
 
 ```bash
-node ./src/hello-world/app.js 
+node ./src/hello-world/app.js
+
+# module
+node --input-type=module --eval "$(cat ./src/module/app.js)"
 ```
 
 ### Deno
