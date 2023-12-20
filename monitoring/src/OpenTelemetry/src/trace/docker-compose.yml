@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  server:
+    image: jaegertracing/all-in-one:1.48
+    ports:
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 14268:14268
+      - 16686:16686
+  rust:
+    image: rust:1.74
+    tty: true
+    volumes:
+      - .:/opt/workspace
+    working_dir: /opt/workspace
+    ports:
+      - 3000:3000
+    links:
+      - server

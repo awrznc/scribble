@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  server:
+    image: prom/prometheus:v2.45.0
+    ports:
+      - 9090:9090
+    volumes:
+      - ./share/:/etc/prometheus/
+  exporter:
+    image: prom/node-exporter:v1.6.0
+    container_name: node-exporter
+    ports:
+      - 9100:9100
+    restart: always
