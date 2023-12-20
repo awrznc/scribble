@@ -1,0 +1,11 @@
+[package]
+name = "trace"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tracing = "0.1.37"
+tracing-subscriber = { version = "0.3.17", features = ["env-filter", "json"] }
+tracing-opentelemetry = "0.20.0"
+opentelemetry = "0.20.0"
+opentelemetry-jaeger = "0.19.0"
