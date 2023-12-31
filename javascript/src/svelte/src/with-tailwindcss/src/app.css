@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.piyopiyo {
+    margin: 1em;
+}
+
+p {
+    color: #EEEEEE;
+}
