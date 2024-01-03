@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  server:
+    container_name: piyo_server
+    image: httpd:2.4
+    networks:
+      - default
+
+networks:
+  default:
+    name: piyo_network
