@@ -63,6 +63,7 @@ use windows::Win32::Graphics::Gdi::*;
 static mut BITMAP_HANDLER: HBITMAP = unsafe { core::mem::zeroed() };
 static mut BITMAP_INFO: BITMAPINFO = unsafe { core::mem::zeroed() };
 static mut DRAWER: Drawer = unsafe { core::mem::zeroed() };
+static mut DIB: [u32; 320 * 180] = [0x00FF0000u32; 320 * 180];
 
 extern "system" fn wndproc(window: HWND, message: u32, wparam: WPARAM, lparam: LPARAM) -> LRESULT {
     match message {
@@ -236,7 +237,6 @@ impl Drawer {
 
     #[cfg(feature = "stretch_di_bits")]
     fn draw(&self, window: HWND) {
-        let dib = vec![0x00FF0000u32; 320 * 180];
         let bmp_header = BITMAPINFOHEADER {
             biSize: std::mem::size_of::<BITMAPINFOHEADER>() as u32,
             biWidth: 320,
@@ -272,7 +272,7 @@ impl Drawer {
                 0,
                 320,
                 180,
-                Some(dib.as_ptr() as _),
+                Some(DIB.as_ptr() as _),
                 &bmp_info,
                 DIB_RGB_COLORS,
                 SRCCOPY,
