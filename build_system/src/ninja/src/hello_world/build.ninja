@@ -1,0 +1,4 @@
+rule hello
+    command = echo 'Hello, World!'
+
+build print: hello
