@@ -1,0 +1,36 @@
+# === 必須バージョン ===
+
+ninja_required_version = 1.11.0
+
+
+# === 変数 ===
+
+hello_string = 'Hello'
+world_string = 'World'
+ninja_string = 'Ninja'
+
+
+# === ルール ===
+
+# 渡されたファイル名で作成
+rule create
+    command = bash -c "echo $string >& $out"
+
+# 渡されたファイルを結合
+rule cat
+    command = cat $in
+
+
+# === ビルドステートメント ===
+
+# `Hello, World!` `Hello, Ninja!` を表示する
+build hello.txt: create
+    string = $hello_string, $world_string!
+
+build hello2.txt: create
+    string = $hello_string, $ninja_string!
+
+build print_hello: cat hello.txt hello2.txt
+
+# `phony` を利用してエイリアスを作成することが可能
+build cat_hello: phony print_hello
