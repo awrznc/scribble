@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: piyo-configmap
+  namespace: default
+data:
+  hello.html: |
+    Hello, kind!
