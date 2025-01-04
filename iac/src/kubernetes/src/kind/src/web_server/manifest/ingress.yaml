@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: piyo-ingress
+  annotations:
+    # index.html以外にアクセスするための措置
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  creationTimestamp: null
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          # index.html以外にアクセスするための措置
+          - path: /httpd(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: piyo-service
+                port:
+                  number: 80

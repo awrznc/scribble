@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: piyo-app
+  name: piyo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: piyo-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: piyo-app
+    spec:
+      containers:
+        - image: httpd:2.4.62
+          name: httpd
+          resources: {}
+          volumeMounts:
+            -
+              name: piyo-volume
+              mountPath: /usr/local/apache2/htdocs/
+      volumes:
+        - name: piyo-volume
+          configMap:
+            name: piyo-configmap
+            items:
+              - key: hello.html
+                path: hello.html
+status: {}
