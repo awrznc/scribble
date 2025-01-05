@@ -1,0 +1,40 @@
+; === システム記述 ===
+@start
+gosub @init
+goto @main
+return
+
+; 初期化
+@init
+gosub @font
+gosub @sprite
+return
+
+; フォント
+@font
+font "hello_font",{width=28,height=28,color=#FFFFFFFF}
+font "hello_ruby",{width=14,height=14,color=#FFFFFFFF}
+return
+
+; スプライト
+@sprite
+sp "hello_text_frame",{name="*800,200,#FFFFFFFF",x=112,y=512,z=100,a=255}
+sp "hello_text_window",{name="*824,224,#FFFFFFFF",x=100,y=500,z=100,a=128}
+return
+
+; テキスト
+@text
+param %tag, %text
+spputtext "hello_text_frame",0,%text,{font="hello_font",wait=0,w=24,h=4},{font="hello_ruby"}
+return
+
+@textb
+param %_, %_
+return
+
+
+; === ゲーム本編 ===
+@main
+>{Hello, World!/ハローワールド！}
+click
+quit
