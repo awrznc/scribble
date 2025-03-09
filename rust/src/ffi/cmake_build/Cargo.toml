@@ -1,0 +1,17 @@
+[package]
+name = "cmake_build"
+version = "0.1.0"
+edition = "2024"
+build = "src/build/main.rs"
+
+[lib]
+name = "tr_lib"
+path = "src/lib/lib.rs"
+
+[[test]]
+name = "tr_test"
+path = "src/test/test.rs"
+
+[build-dependencies]
+cmake = "0.1.54"
+bindgen = "0.71.1"
