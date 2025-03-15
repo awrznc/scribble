@@ -1,0 +1,7 @@
+.tmp/
+
+# NScripter2 File
+*.exe
+*.lua
+*.dll
+*.def
