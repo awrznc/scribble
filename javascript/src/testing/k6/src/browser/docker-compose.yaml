@@ -1,0 +1,19 @@
+services:
+  server:
+    image: httpd:2.4
+    ports:
+      - 8080:80
+    volumes:
+      - ./pages/:/usr/local/apache2/htdocs/
+    networks:
+      - default
+
+  tester:
+    image: grafana/k6:0.57.0-with-browser
+    volumes:
+      - ./scenario:/opt/k6/
+    working_dir: /opt/k6/
+    depends_on:
+      - server
+    networks:
+      - default
