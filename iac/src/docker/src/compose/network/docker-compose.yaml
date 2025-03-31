@@ -1,0 +1,23 @@
+# docker compose up -d
+# docker compose run --rm -it runner bash
+# apt update -y && apt install -y curl
+# # 内部ポートを指定すること
+# curl http://server:80/
+# => <html><body><h1>It works!</h1></body></html>
+
+services:
+  server:
+    image: httpd:2.4
+    ports:
+      - 8080:80
+    networks:
+      - default
+
+  runner:
+    image: debian:11
+    networks:
+      - default
+
+networks:
+  default:
+    name: piyo_network

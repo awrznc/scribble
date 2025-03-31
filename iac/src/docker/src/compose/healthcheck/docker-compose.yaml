@@ -1,0 +1,26 @@
+# docker compose up -d
+
+services:
+  redis:
+    image: redis:7.4.2
+    healthcheck:
+      test: redis-cli ping
+      interval: 2s
+      timeout: 2s
+      retries: 30
+
+  mysql:
+    image: mysql:9.2.0
+    env_file:
+      - .env
+    healthcheck:
+      test: mysqladmin ping -h localhost -u root -p ${MYSQL_ROOT_PASSWORD}
+      interval: 2s
+      timeout: 2s
+      retries: 30
+
+  healthchecker:
+    image: hello-world:latest
+    depends_on:
+      redis: { condition: service_healthy }
+      mysql: { condition: service_healthy }

@@ -1,0 +1,15 @@
+services:
+  runner:
+    image: debian:11
+
+    # === コンテナ内で利用 ( `environment` の方が優先される ) ===
+    # $ docker compose run --rm runner env
+    env_file:
+      - piyo.env
+    environment:
+      TEXT: hello
+
+    # === docker-compose.yaml 読み込み時に埋め込まれる ( 何も指定していない場合は `.env` を読み込む ) ===
+    # $ docker compose run --rm runner # => `default`
+    # $ docker compose --env-file=piyo.env run --rm runner # => `piyo`
+    command: 'echo ${TEXT}'
