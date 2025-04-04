@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "label": "piyo",
+        "level": "INFO"
+      },
+      "values": [
+        [
+          "${NOW}",
+          "Hello, World!"
+        ]
+      ]
+    }
+  ]
+}

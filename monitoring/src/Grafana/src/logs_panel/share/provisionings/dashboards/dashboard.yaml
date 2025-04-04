@@ -1,0 +1,15 @@
+apiVersion: 1
+
+providers:
+  - name: 'Logs'
+    orgId: 1
+    folder: ''
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: false
+
+    # ダッシュボードの中身
+    options:
+      path: /var/lib/grafana/dashboards/Logs.json
+      foldersFromFilesStructure: false
