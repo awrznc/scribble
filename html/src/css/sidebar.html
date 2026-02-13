@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --main-color: #DDD;
+      --main-color-hover: #BBB;
+      --sub-color: #FFF;
+      --link-color: #666;
+      --accent-color: #222;
+      --accent-color-hover: #333;
+      --accent-color-hover-hover: #444;
+    }
+
+    .active {
+      background-color: var(--accent-color-hover);
+
+      &:hover {
+        background-color: var(--accent-color-hover-hover);
+        transition: background-color 0.2s ease;
+      }
+    }
+
+    .non-active {
+      background-color: var(--accent-color);
+
+      &:hover {
+        background-color: var(--accent-color-hover);
+        transition: background-color 0.2s ease;
+      }
+    }
+
+    /* 子要素の最初にnav、その次にdev->header->inputを持つdiv */
+    /* スキーマチェック感がある */
+    div:has(>nav+div header label input[type="checkbox"]) {
+      display: flex;
+
+      /* 最初のnav */
+      >nav {
+        width: 10rem;
+        height: 100vh;
+        background-color: var(--accent-color);
+        transition: all 0.2s ease;
+
+        ul li a {
+          /* はみ出る部分は非表示にする */
+          overflow: hidden;
+          /* 親要素の横幅に合わせる */
+          display: block;
+          margin: 0.2rem 0.5rem 0.2rem 0.5rem;
+          padding: 0.5rem;
+          border-radius: 10px;
+          text-decoration: none;
+          color: var(--sub-color);
+          font-size: 1rem;
+        }
+
+        header {
+          display: flex;
+          justify-content: center;
+          margin: 1rem;
+
+          a {
+            font-size: 1.4rem;
+            color: var(--sub-color);
+            text-align: center;
+            text-decoration: none;
+          }
+        }
+
+        footer {
+          position: fixed;
+          bottom: 0;
+        }
+      }
+
+      /* 属性checkedを持つinputが存在する場合の最初のnav */
+      &:has(input[type="checkbox"]:checked)>nav {
+        width: 0%;
+        transition: all 0.2s ease;
+      }
+
+      >nav+div {
+        flex: auto;
+        background-color: var(--main-color);
+      }
+
+      >nav+div header {
+        display: flex;
+        background-color: var(--sub-color);
+
+        a {
+          text-decoration: none;
+          color: var(--link-color);
+        }
+
+        +div {
+          margin: 1rem;
+        }
+      }
+
+      >nav+div header label {
+        cursor: pointer;
+        user-select: none;
+      }
+
+      >nav+div header label input[type="checkbox"] {
+        cursor: pointer;
+        user-select: none;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        ~span {
+          display: inline-block;
+          width: 2rem;
+          height: 2rem;
+          text-align: center;
+          border-radius: 20%;
+          transition: background-color 0.2s ease;
+          background-color: var(--main-color);
+          margin: 0.3rem;
+        }
+
+        +span {
+          position: absolute;
+          opacity: 0;
+          transition: background-color 0.2s ease;
+        }
+
+        ~div {
+          transition: background-color 0.2s ease;
+        }
+
+        &:hover~span {
+          background-color: var(--main-color-hover);
+          transition: background-color 0.2s ease;
+        }
+
+        &:checked {
+          ~span {
+            opacity: 0;
+          }
+
+          +span {
+            opacity: 1;
+          }
+        }
+      }
+
+      >nav+div header>label+nav {
+
+        ul {
+          list-style: none;
+          margin: 0.5rem;
+
+          li {
+            display: inline-block;
+          }
+
+          li:not(:last-child)::after {
+            content: ' /';
+            margin: 0.5rem;
+          }
+
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <nav>
+      <header><a href="#">Console</a></header>
+      <ul>
+        <li><a href="#" class="non-active">Piyo</a></li>
+        <li><a href="#" class="active">Puyo</a></li>
+        <li><a href="#" class="non-active">Poyo</a></li>
+      </ul>
+      <footer><a href="#">FOOTER</a></footer>
+    </nav>
+
+    <div>
+      <header>
+        <label>
+          <input type="checkbox">
+          <span style="display: flex; justify-content: center; align-items: center;">O</span>
+          <span style="display: flex; justify-content: center; align-items: center;">C</span>
+        </label>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Puyo</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div>
+        <h1>Puyo</h1>
+        <p>contents</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

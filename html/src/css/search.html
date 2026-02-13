@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      padding: 0.2rem;
+      border: 1px solid #BBB;
+      border-radius: 24px;
+
+      display: flex;
+      align-items: flex-start;
+      overflow: hidden;
+      border: 1px solid #BBB;
+      border-radius: 24px;
+
+      div {
+        height: 0;
+        transition: all 0.2s ease;
+        interpolate-size: allow-keywords;
+
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      div span {
+        display: inline-block;
+        margin: 0.8rem;
+        flex-shrink: 0;
+      }
+
+      button:last-of-type {
+        text-align: center;
+        /* border-radius: 20%; */
+        background-color: red;
+        border: none;
+        cursor: pointer;
+        margin: 0.3rem 0.3rem 0.3rem auto;
+        width: 2rem;
+        height: 2rem;
+        transition: background-color 0.2s ease;
+        flex-shrink: 0;
+
+        &:hover {
+          background-color: blue;
+          transition: background-color 0.2s ease;
+        }
+      }
+    }
+
+    input[type="text"] {
+      padding: 4px;
+      margin: 0.6rem;
+      width: 100%;
+      outline: none;
+      border: none;
+      appearance: none;
+      border-bottom: 1px solid color-mix(in srgb, #BBB 0%, transparent);
+    }
+
+    input[type="text"]:focus {
+      border-bottom: 1px solid color-mix(in srgb, #BBB 100%, transparent);
+    }
+
+    div:has(>form >label >input[type="checkbox"]) {
+      &:has(>form >label >input[type="checkbox"]:checked)>form div {
+        transition: all 0.2s ease;
+        height: auto;
+      }
+
+      .os {
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+
+
+        input[type="checkbox"] {
+          cursor: pointer;
+          user-select: none;
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+
+          ~span {
+            width: 2rem;
+            height: 2rem;
+            margin: 0.3rem;
+            text-align: center;
+            /* border-radius: 20%; */
+            transition: background-color 0.2s ease;
+            background-color: red;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          +span {
+            position: absolute;
+            opacity: 0;
+            transition: background-color 0.2s ease;
+          }
+
+          ~div {
+            opacity: 0;
+            height: 0;
+            transition: all 0.2s ease;
+          }
+
+          &:hover~span {
+            background-color: blue;
+            transition: background-color 0.2s ease;
+          }
+
+          &:checked {
+            ~span {
+              opacity: 0;
+            }
+
+            +span {
+              opacity: 1;
+            }
+
+            ~div {
+              opacity: 1;
+              height: 100px;
+              transition: all 0.2s ease;
+            }
+          }
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <form action="#">
+      <label class="os">
+        <input type="checkbox">
+        <span>C</span>
+        <span>O</span>
+      </label>
+      <label>
+        <input type="text" id="kw" name="keyword" placeholder="キーワードを入力" />
+        <div>
+          <span>
+            <p style="font-size: small; color: gray">checkbox</p>
+            <input type="checkbox" id="123" name="123" />
+            <label for="123">123</label><br>
+            <input type="checkbox" id="456" name="456" />
+            <label for="456">456</label>
+          </span>
+          <span>
+            <p style="font-size: small; color: gray">date</p>
+            <input type="date" id="dt" name="date" value="2026-01-01" />
+          </span>
+          <span>
+            <p style="font-size: small; color: gray">radio</p>
+            <input type="radio" id="aaa" name="radio" value="aaa" />
+            <label for="aaa">AAA</label><br>
+            <input type="radio" id="bbb" name="radio" value="bbb" checked />
+            <label for="bbb">BBB</label><br>
+            <input type="radio" id="ccc" name="radio" value="ccc" />
+            <label for="ccc">CCC</label>
+          </span>
+          <span>
+            <p style="font-size: small; color: gray">dropdownlist</p>
+            <select name="dropdownlist">
+              <option value="ddd">ddd</option>
+              <option value="eee">eee</option>
+              <option value="fff">fff</option>
+            </select>
+          </span>
+        </div>
+      </label>
+      <button type="submit">S</button>
+    </form>
+  </div>
+</body>
+
+</html>
