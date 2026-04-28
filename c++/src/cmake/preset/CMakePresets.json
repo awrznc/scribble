@@ -1,0 +1,35 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "Win32",
+            "generator": "Visual Studio 17 2022",
+            "binaryDir": "${sourceDir}/build/Win32",
+            "environment": {},
+            "cacheVariables": {
+                "CMAKE_GENERATOR_TOOLSET": "v143",
+                "CMAKE_GENERATOR_PLATFORM": "Win32"
+            }
+        },
+        {
+            "name": "x64",
+            "generator": "Visual Studio 17 2022",
+            "binaryDir": "${sourceDir}/build/x64",
+            "environment": {},
+            "cacheVariables": {
+                "CMAKE_GENERATOR_TOOLSET": "v143",
+                "CMAKE_GENERATOR_PLATFORM": "x64"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Win32",
+            "configurePreset": "Win32"
+        },
+        {
+            "name": "x64",
+            "configurePreset": "x64"
+        }
+    ]
+}
