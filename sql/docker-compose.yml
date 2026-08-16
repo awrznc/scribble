@@ -20,6 +20,54 @@ services:
       MYSQL_USER: mysql_user
       MYSQL_PASSWORD: mysql_pass
 
+  # MySQL Server ( SSL接続 + サーバ証明書確認 )
+  mysql_server_require_secure_transport:
+    # image: mysql:8.4.11
+    container_name: 'mysql_server_8.4.11_auto_generated_server_certificate'
+    build:
+      context: ./src/require_secure_transport/
+      dockerfile: ./Dockerfile
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: mysql_pass
+    volumes:
+      - share:/var/lib/mysql/
+    healthcheck:
+      test: ["CMD", "cat", "/var/lib/mysql/ca.pem"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+
+  # DBの初期化ツール ( mysql_server_require_secure_transport に利用 )
+  migrator:
+    image: flyway/flyway:13.3.0
+    environment:
+      # ここの接続先の文字列を任意のものに変えたい場合はopensslコマンドを用いて自前で証明書を作成する必要がある
+      FLYWAY_URL: jdbc:mysql://mysql_server_8.4.11_auto_generated_server_certificate:3306?useSsl=true
+      # サーバ証明書の検証をしないならこちらでOK
+      # FLYWAY_URL: jdbc:mysql://mysql_server_require_secure_transport:3306?useSsl=true&trustServerCertificate=true&allowPublicKeyRetrieval=true&permitMysqlScheme=true
+      FLYWAY_USER: root
+      FLYWAY_PASSWORD: mysql_root_pass
+      FLYWAY_LOCATIONS: filesystem:/flyway/sql/
+      JAVA_ARGS: >-
+        -Djavax.net.ssl.trustStorePassword=storepass
+        -Djavax.net.ssl.trustStore=/flyway/certs/truststore-local.p12
+      # こちらのような有効でない証明書の場合は接続できずエラーになる
+      # JAVA_ARGS: >-
+      #   -Djavax.net.ssl.trustStorePassword=storepass
+      #   -Djavax.net.ssl.trustStore=/flyway/certs/truststore-global.p12
+    entrypoint: ["sh", "-c", "/opts/src/flyway.bash && flyway -connectRetries=60 -schemas=myschema migrate"]
+    volumes:
+      - share:/opts/mysql/certs/:ro
+      - ./src/require_secure_transport/sql/:/flyway/sql/
+      - ./src/require_secure_transport/src/:/opts/src/
+    depends_on:
+      mysql_server_require_secure_transport: { condition: service_healthy }
+
   # Client
   sql_client:
     build:
@@ -27,5 +75,9 @@ services:
       dockerfile: Dockerfile
     tty: true
     volumes:
+      - share:/opts/mysql/certs/:ro
       - "./:/opt/"
     working_dir: /opt/
+
+volumes:
+  share:
